@@ -84,8 +84,8 @@ import { Component } from 'react';
 \item If you write javascript in the App.js and index.js - console.log() will output directly to a browser inspector.
 \item React automatically detects saved changes, and the local server updates. So you can update accordingly.
 \item
-\item
-\item
+\item React Rule: Never Directly Modify State, if your intention is for changes to occur in the render method based on the updated state values. Use setState() instead!
+\item But \textbf{Why?} React is designed to re-render() a given app when the setState() function is called. If you modify state directly, the changes will \textbf{not} be reflected in browser.
 \item
 \end{itemize}
 
