@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Projects from './Projects.js';
+import SocialProfiles from './SocialProfiles.js';
+import profile from './assets/profile.png';
 
 class App extends Component {
 
@@ -19,9 +21,10 @@ class App extends Component {
   toggleDisplayBio = () =>  {
     this.setState({ displayBio: !this.state.displayBio});
   }
-
+//cant use class attribute - reserved word in React.
   render() { //defines the HTML elements structure of the Component. This is a static method in Component Class.
       return ( <div>
+        <img src={profile} alt="profile" className='profile' />
         <h1> Hello! </h1>
         <p> My name is Bill. I'm a Software Engineer. </p>
         <p> I'm looking forward to learning React.js </p>
@@ -37,7 +40,10 @@ class App extends Component {
          )}
          <hr />
          <Projects />
-        </div> ) //Usage of special JSX
+        <hr />
+          <SocialProfiles /> //containers should have capitalized names.
+        </div>
+        ) //Usage of special JSX
   }
 }
 

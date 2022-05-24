@@ -9,7 +9,7 @@ class Project extends Component {
     const { title, image, description, link } = this.props.project;
 
     return ( //style: two braces. One to declare the style, the other to declare the object.
-      <div style={{display: 'inline-block', width:100, margin:10}}>
+      <div style={{}}>
         <h3> {title} </h3>
         <img src={image} alt='profile' />
         <p>{description}</p>
