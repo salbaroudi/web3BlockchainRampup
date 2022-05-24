@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
+import Projects from './Projects.js';
 
 class App extends Component {
+
+  //Notice that we don't bother to initialize the component fields.
+  //auto-constructed with default values that we won't use, (likely).
+  state = { displayBio: false };
+
+/*
   constructor() {
     super(); //you can't extend a class, and not initialize superclass fields.
     this.state = { displayBio: false }; //toggles bio
 
     this.toggleDisplayBio = this.toggleDisplayBio.bind(this); //must bind methods to access this.
   }
+*/
 
-
-  toggleDisplayBio() {
+  toggleDisplayBio = () =>  {
     this.setState({ displayBio: !this.state.displayBio});
   }
 
@@ -28,7 +35,8 @@ class App extends Component {
               <button onClick={this.toggleDisplayBio}> Read More </button>
            </div>
          )}
-
+         <hr />
+         <Projects />
         </div> ) //Usage of special JSX
   }
 }
