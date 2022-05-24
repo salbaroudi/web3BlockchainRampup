@@ -2,7 +2,7 @@ import p1 from '../assets/project1.png';
 import p2 from '../assets/project2.png'; //notice that we can do relative paths...
 import p3 from '../assets/project3.png'; //and bind an image to a name!!
 
-
+//This is a data file.
 //Use uppercase names for GLOBAL variables.
 const PROJECTS = [
   {
