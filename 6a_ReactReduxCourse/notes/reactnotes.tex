@@ -72,6 +72,8 @@ document.getElementById("root"));
 \end{verbatim}
 
 \item In react, we typically bundle reusable UI elements into \textbf{Components}. 
+\item \textbf{Components:} reusable pieces of React code to control part of the user interface. Components capture the structure of UI, and can have internal data to track the user behavior throughout the lifetime of the app.
+
 \item A react app will contain many different \textbf{Components}.
 \item Naturally, react has a Component class that can be imported from the react core library.
 
@@ -83,17 +85,42 @@ import { Component } from 'react';
 \item A typical design pattern in React will be to extend template component classes, and add additional fields/methods to implement your application.
 \item If you write javascript in the App.js and index.js - console.log() will output directly to a browser inspector.
 \item React automatically detects saved changes, and the local server updates. So you can update accordingly.
-\item
-\item React Rule: Never Directly Modify State, if your intention is for changes to occur in the render method based on the updated state values. Use setState() instead!
-\item But \textbf{Why?} React is designed to re-render() a given app when the setState() function is called. If you modify state directly, the changes will \textbf{not} be reflected in browser.
-\item
+\item \textbf{State Field:} Subclasses of the Components class have a state field that we can use. We can link an object to this field, to maintain current state as the Component runs.
+\item \textbf{State:} dynamic data in a React component. This is often used to track variables that will be re-rendered in the UI based on events that occur in the application.
+\item \textbf{React Rule:} Never Directly Modify the State property, if your intention is for changes to occur in the render method based on the updated state values. Use \textit{setState()} instead.
+\item \textbf{But Why??} React is \textit{designed to re-render()} a given component when the setState() function is called. If you modify state directly, the changes will \textbf{not} be reflected in browser.
+\item \textbf{Props:} Just stands for "Property". Data in a React component that gets passed down from its parent. In the parent component, it will pass data down to the child component through attributes in the child component’s JSX.
+\item Practically, how does the passing work? See the example below:
 
-\item Components: reusable pieces of React code to control part of the user interface. Components capture the structure of UI, and can have internal data to track the user behavior throughout the lifetime of the app.
+\begin{verbatim}
+class Profile extends Component {
+ const {img, link} = this.props.profile
 
-\item State: dynamic data in a React component. This is often used to track variables that will be re-rendered in the UI based on events that occur in the application.
+...
 
-\item Props: data in a React component that gets passed down from its parent. In the parent component, it will pass data down to the child component through attributes in the child component’s JSX.
+}
+
+class SocialProfiles extends Component {
+render() {
+...
+SOCIALPROFILES.map( prof => {
+return )
+<Profile key={prof.id} profile={prof />
+...
+
+}
+}
+\end{verbatim}
+
+Note that the SOCIALPROFILEs data object gives us our data for this example. We map() on each element of the object.
+
+Here, our Profile class defines a component that is a child to the SocialProfiles Class. We instantiate an object of the Profile class using the <Profile tag>. In the tag, we have placed properties (id, profile) that are fed into the object instance of Profile. We then can access these properties with \textit{this.props(.profile...)}
 \end{itemize}
+
+\item Visual Summary, \textbf{our modified \textit{create-react-app} project:}
+
+\includegraphics[scale=0.5]{appstructure.png}
+
 
 \section*{Breaking Down React: React and Web Development:}
 
@@ -102,13 +129,17 @@ import { Component } from 'react';
 \subsubsection{}
 
 \begin{itemize}
-\item
-\item
-\item
-\item
-\item
-\item
-\item
+\item For this section, we will not use the template \textit{create-react-app}, and build a bottom up example.
+\item In the end, much of the structure in create-react-app is not necessary to get a minimal example to run.
+\item All an app needs is one index.html page, and index.js page.
+\item You don't even need to run "npm start" or "node react" - you can use CDNs to load React and ReactDOM libriaries straight into the browser.
+\item The Minimal Example is as follows:
+
+\mitem React CDN script tags at the end of index.html
+\mitem A div root tag in index.html, so React can insert our <App> into the DOM tree.
+
+In index.js you can just build an app, render() and insert it as normal.
+
 \item
 \item
 \item
