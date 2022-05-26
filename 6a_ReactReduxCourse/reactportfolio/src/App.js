@@ -21,8 +21,8 @@ class App extends Component {
   toggleDisplayBio = () =>  {
     this.setState({ displayBio: !this.state.displayBio});
   }
-//cant use class attribute - reserved word in React.
-  render() { //defines the HTML elements structure of the Component. This is a static method in Component Class.
+//cant use class attribute - reserved word in React.C
+  render() { //defines the HTML elements structure of theComponent. This is a static method in Component Class.
       return ( <div>
         <img src={profile} alt="profile" className='profile' />
         <h1> Hello! </h1>

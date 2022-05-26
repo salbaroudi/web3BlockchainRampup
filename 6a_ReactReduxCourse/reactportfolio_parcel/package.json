@@ -1,0 +1,20 @@
+{
+  "name": "reactportfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html",
+    "start": "npm run build && live-server dist"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.17.12",
+    "live-server": "^1.2.2",
+    "parcel-bundler": "^1.12.5",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.2"
+  }
+}

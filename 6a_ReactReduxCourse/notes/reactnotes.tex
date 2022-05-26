@@ -130,29 +130,58 @@ Here, our Profile class defines a component that is a child to the SocialProfile
 
 \begin{itemize}
 \item For this section, we will not use the template \textit{create-react-app}, and build a bottom up example.
+\item Instead, we will use transpilation and packaging, with a minimal setup, to produce a basic React application.
 \item In the end, much of the structure in create-react-app is not necessary to get a minimal example to run.
 \item All an app needs is one index.html page, and index.js page.
 \item You don't even need to run "npm start" or "node react" - you can use CDNs to load React and ReactDOM libriaries straight into the browser.
-\item The Minimal Example is as follows:
-
+\item \textbf{The Minimal Example is as follows:}
 \mitem React CDN script tags at the end of index.html
 \mitem A div root tag in index.html, so React can insert our <App> into the DOM tree.
 
 In index.js you can just build an app, render() and insert it as normal.
+\item JSX: This is short-hand syntactic sugar that is transpiled to code that the browser will understand, when we run our react project (with npm start).
+\item Transpilation is typically done with the \textbf{Babel package}.
+\item \textbf{Why use Babel?} Javascript compliance is entirely Browser dependent - and JS core language development is completely separate from Browser development. When we want new features that Browsers may not yet support - we can transpile code to cruder JS so that it can be used in current browsers.
 
-\item
-\item
-\item
-\item
-\item
-\item
-\item
+\item \textbf{Bundling and Transpiling:} Note that our React project will run in the browser, but ultimately Chrome/FF will not support our import/export system, nor will it support JSX. So we use a \textbf{bundler package (Parcel)} that utilizes Babel to produce a low-level enough JS file so that Chrome/FF can run our app. 
+\item Parcel traces our application code, and finds all possible dependences, and then places all imported code into one mega-js file. Any syntactic sugar (such as JSX) is transpiled into lower level JS code that a browsre can understand.
+
+\includegraphics[scale=0.5]{bundle.png}
+
+\item \textbf{Why Use Parcel?} The alternative is to import multiple scripts into the index.html page. These are loaded in order. As our project incrases in size+complexity we may deal with loading issues (namespace clobbering, circular dependencies, etc). To avoid this, Parcel will make one large JS file where dependency/NS issues are alleviated.
+
+\item \textbf{Basic Parcel Usage:}
+
+\begin{verbatim}
+parcel <index.html>
+\end{verbatim}
+
+It will trace back all code depedencies from here.
+ 
+\item Parcel Folders (in project): These will appear after you run parcel the first time:
+\mitem \textbf{.cache}: Stores compiled elements to minimize recompilation later.
+\mitem \textbf{dist:} Folder where bundled+transpiled JS code is stored - will rewrite index.html script links to point to this directory!
+\item Using Parcel for Dev and Production: Parcel has a hot-wire feature - we can run it with the index.html, and it will auto-update all our code as we develop it.
+
+Parcel however is heavier-weight - we don't use it when we launch produciton code. The following package.json scripts would be seen for a parcel build:
+
+\begin{verbatim}
+"scripts": {
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html",
+    "start": "npm run build && live-server dist"
+  }
+\end{verbatim}
+
+A lighter server (live-server) is chosen to strip down the size of the compiled production build, for launch.
+
+\item \textbf{VirtualDOM:} React has its own stripped-down DOM model, so that it can make dynamic changes to the application page. Note: You don't use native DOM methods (like createElement, getElementById()...) in React - it has its own framework calls to do manipuations.
 \item
 \item
 \item
 \end{itemize}
 
-\section{}
+\section{Continued Main React Concepts:}
 
 \subsection{}
 
