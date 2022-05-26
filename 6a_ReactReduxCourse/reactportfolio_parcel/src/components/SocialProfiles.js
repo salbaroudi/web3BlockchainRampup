@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import SOCIAL_PROFILES from '../data/socialProfiles'; //why not .js? Just figures from magic number??
 
-//Make a separate component for each line of data.
-class Profile extends Component {
-  render() {
-    const { link, image } = this.props.profile; //destructuring.
+
+const Profile = props => {
+    const { link, image } = props.profile; //destructuring.
 
     return (
       <div>
@@ -14,28 +13,21 @@ class Profile extends Component {
       </div>
     )
   }
-}
 
-
-//Our Projects sub-component.
-class SocialProfiles extends Component {
-  render() {
-    return (
+const SocialProfiles = () => (
+  <div>
+    <h2> Connect with Me:: </h2>
     <div>
-      <h2> Connect with Me:: </h2>
-      <div>
-        {
-          SOCIAL_PROFILES.map( prof => {
-            return (
-              <Profile key={prof.id} profile={prof} /> //this must construct a Profile Object, and
-            ); //props = property!!
-          })
-        }
-      </div>
+      {
+        SOCIAL_PROFILES.map( prof => (
+            <Profile key={prof.id} profile={prof} /> //this must construct a Profile Object, and
+          ) //props = property!!
+        )
+      }
     </div>
-    )
-  }
-}
+  </div>
+)
+
 
 //Once again, we must make it available to other parts of the codebase.
 export default SocialProfiles;

@@ -3,6 +3,7 @@ import Projects from './Projects.js';
 import SocialProfiles from './SocialProfiles.js';
 import profile from '../assets/profile.png';
 import Title from "./Title";
+import Jokes from "./Jokes.js"
 class App extends Component {
 
   //Notice that we don't bother to initialize the component fields.
@@ -21,6 +22,7 @@ class App extends Component {
   toggleDisplayBio = () =>  {
     this.setState({ displayBio: !this.state.displayBio});
   }
+
 //cant use class attribute - reserved word in React.
   render() { //defines the HTML elements structure of the Component. This is a static method in Component Class.
       return ( <div>
@@ -44,6 +46,8 @@ class App extends Component {
          <Projects />
         <hr />
           <SocialProfiles /> //containers should have capitalized names.
+        <hr />
+        <Jokes />
         </div>
         ) //Usage of special JSX
   }
