@@ -10,9 +10,10 @@ class Jokes extends Component {
 
   //Fetch is async.
   componentDidMount() {
-    fetch("http://localhost:3005/random_joke")
+    fetch("http://localhost:3005/random_joke") //will return a promise.
     .then(response => response.json())
-    .then(json => this.setState({joke: json}));
+    .then(json => this.setState({joke: json}))
+    .catch(error => console.log("Error:", error.message));
     //.then(response => console.log(response.json())); //returns a promise with results inside
     // //our json is just the pointer to response.json() before.
   }
@@ -22,7 +23,8 @@ class Jokes extends Component {
     //Same remainder code, regardless
     fetch("http://localhost:3005/random_ten")
     .then(response => response.json())
-    .then(json => this.setState({jokes:json}));
+    .then(json => this.setState({jokes:json}))
+    .catch(error => console.log("Error:", error.message));
 
   }
   render() {

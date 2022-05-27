@@ -54,7 +54,7 @@ npm start
 to install and get the local server running.
 
 \item \textbf{Project Structure:}
-\item \textbf{./node_modules:} All locally installed node dependences are stored here.
+\item \textbf{./nodemodules:} All locally installed node dependences are stored here.
 \item \textbf{./public:} index.html (front page, robots.txt and favicons stored here.
 \item \textbf{./src:} Contains the React Apps (self-contained pieces of interface+code), and support files, including:
 
@@ -115,11 +115,12 @@ return )
 Note that the SOCIALPROFILEs data object gives us our data for this example. We map() on each element of the object.
 
 Here, our Profile class defines a component that is a child to the SocialProfiles Class. We instantiate an object of the Profile class using the <Profile tag>. In the tag, we have placed properties (id, profile) that are fed into the object instance of Profile. We then can access these properties with \textit{this.props(.profile...)}
-\end{itemize}
-
 \item Visual Summary, \textbf{our modified \textit{create-react-app} project:}
 
-\includegraphics[scale=0.5]{appstructure.png}
+\includegraphics[scale=0.25]{appstructure.png}
+
+\end{itemize}
+
 
 
 \section*{Breaking Down React: React and Web Development:}
@@ -146,7 +147,7 @@ In index.js you can just build an app, render() and insert it as normal.
 \item \textbf{Bundling and Transpiling:} Note that our React project will run in the browser, but ultimately Chrome/FF will not support our import/export system, nor will it support JSX. So we use a \textbf{bundler package (Parcel)} that utilizes Babel to produce a low-level enough JS file so that Chrome/FF can run our app. 
 \item Parcel traces our application code, and finds all possible dependences, and then places all imported code into one mega-js file. Any syntactic sugar (such as JSX) is transpiled into lower level JS code that a browsre can understand.
 
-\includegraphics[scale=0.5]{bundle.png}
+\includegraphics[scale=0.24]{bundle.png}
 
 \item \textbf{Why Use Parcel?} The alternative is to import multiple scripts into the index.html page. These are loaded in order. As our project incrases in size+complexity we may deal with loading issues (namespace clobbering, circular dependencies, etc). To avoid this, Parcel will make one large JS file where dependency/NS issues are alleviated.
 
@@ -179,6 +180,7 @@ A lighter server (live-server) is chosen to strip down the size of the compiled 
 \item
 \item
 \item
+
 \end{itemize}
 
 \section{Continued Main React Concepts:}
@@ -188,19 +190,78 @@ A lighter server (live-server) is chosen to strip down the size of the compiled 
 \subsubsection{}
 
 \begin{itemize}
+\item \textbf{Component Lifecycle:} Components have various event methods, that can be triggered during there operation. In particular, we are interested in when the component starts up, and when it shuts down with two methods:
+\item \textbf{componentDidMount():} Called after component is loaded. If the method has to perform setup work or a fetch(), write this code in here.
+\item \textbf{ComponentWillUnmount():} Called just before a Component is unmounted and destroyed. Use this as a takedown/cleanup/signalling method.
+\item Both methods above are written in the Component extended class - use non-first class functions only. "function" keyword is not required (its a JS class!).
+\item \textbf{Stateless Functional Components:} Simplified Notation can be used, if our components contain no state. See Example Below:
+
+\begin{verbatim}
+
+const Project = props => {
+	//destructure
+  const { title, image, description, link } = props.project;
+ 
+  return (
+    <div style={{}}>
+      <h3> {title} </h3>
+      <img src={image} alt='profile' />
+      <p>{description}</p>
+      <a href={link}>{link}</a>
+    </div>
+  )
+}
+\end{verbatim}
+
+Notice that for static/one-time components, we don't even need the render() method. We can even skip the return and encase the functional body with () - however we did destructuring above, so in this case it cannot be made that simple. Most simple example below:
+
+\begin{verbatim}
+const SimpleComp = props => {
+	<div>   ~~SOME JSX~~   </div>
+}
+\end{verbatim}
+
+
+\item \textbf{fetch():} Default Node/React method for making HTTP calls to external sources. When apps communicate by APIs, HTTP+fetch is typically how it is done.
+\item fetch() returns a JS Promise - and is an asyncronous function.
+\item \textbf{Fetch Example 1:} Get a JSON object and print it:
+\begin{verbatim}
+fetch("http://localhost:3005/random_joke")
+    .then(response => console.log(response.json()))
+    .catch(error => console.log("Error:", error.message));
+\end{verbatim}
+
+Will print out json object to console. Basic errors also handled.
+
+\item Example 2: Extract an array of JSON objects from promise, and work with them:
+
+\begin{verbatim}
+...
+  state = {...jokes: []};
+
+  fetchJokes = () => {
+    //Same remainder code, regardless
+    fetch("http://localhost:3005/random_ten")
+    .then(response => response.json())
+    .then(json => this.setState({jokes:json}))
+
+...
+
+ { //At site where we want to print objects...
+   this.state.jokes.map(joke => (
+   <Joke key={joke.id} joke={joke}/>
+    ))
+ }
+\end{verbatim}
+
+We use the state and setState to pull the jokes array. We can then work on it, avoiding promise/fucntional notation later on down the in the code.
+
+\item \textbf{NOTE (!)} I could not get routing or higher-order functions to work (!!) - course code versions are too old.
+\item Applying routing to the application. With react-router, a single page React application can transform into one with multiple pages of different content. Each page matches a url path of the application to a different component.
 \item
 \item
 \item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
+\item \textbf{Higher-order Components:} A higher-order component is one that takes another component as an input. The idea is to treat the component like a function. Have one component as input, and then output an entirely new component based on that input, with new properties, methods, and/or JSX!
 \item
 \item
 \item
