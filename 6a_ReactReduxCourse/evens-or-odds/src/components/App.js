@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { startGame, cancelGame } from '../actions/settings';
+import { fetchDeckResult, fetchNewDeck } from "../actions/deck";
+import Instructions from "./Instructions";
+
 
 class App extends Component {
-/* For non DispatchMap connector Function
-  startGame = () => {
-    this.props.dispatch(startGame());
+  startGame = () => { //we must init the deck - but we also query the API separately later.
+    this.props.startGame();
+    this.props.fetchNewDeck();
   }
-
-  cancelGame = () => {
-    this.props.dispatch(cancelGame());
-  }
-*/
   render() {
     console.log("App THIS::", this);
     return (
@@ -28,7 +26,8 @@ class App extends Component {
           <div>
             <h3> A new game awaits </h3>
             <br />
-            <button onClick={this.props.startGame}> Start Game </button>
+            <button onClick={this.startGame}> Start Game </button>
+            <Instructions />
           </div>
         )
       }
@@ -50,7 +49,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     startGame: () => dispatch(startGame()),
-    cancelGame: () => dispatch(cancelGame())
+    cancelGame: () => dispatch(cancelGame()),
+    fetchNewDeck: () => fetchNewDeck(dispatch)
   };
 }
 

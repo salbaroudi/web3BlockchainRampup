@@ -14,7 +14,9 @@ class Instructions extends Component {
           this.props.instructionsExpanded ? (
             <div>
               <h3> How to Play:</h3>
-              <div> "Lorem ipsum dolor sit amet, consectetur adipiscing elit...</div>,
+              <div> Welcome to Evens or Odds. The game goes like this:</div>
+              <div> The deck is shuffled. Then choose: will the next card be even or odd? </div>
+              <div> Make a choice on every draw and see how many you get right! (Face cards don't count) </div>
               <br />
               <button onClick={this.props.collapseInstructions}> Hide Instructions </button>
             </div>

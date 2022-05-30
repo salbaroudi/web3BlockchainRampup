@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import Instructions from "./components/Instructions";
 import { createStore } from 'redux';
 import { Provider } from 'react-redux'; //higher order Component that wraps the application.
 import './index.css';
@@ -24,5 +23,4 @@ store.dispatch(collapseInstructions());
 ReactDOM.render( //store is provided to the Provider wrapper. However the App doesn't have access just yet.
   <Provider store={store}>
     <App />
-    <Instructions />
   </Provider>, document.getElementById('root'));
