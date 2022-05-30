@@ -43,13 +43,13 @@
 \item To start a React Project, most developers will utilize the create-react-app project template (a node package). Simply install this package and run it to start.
 Specifically:
 
-\begin{verse}
+\begin{verbatim}
 
 npx create-react-app <project name>
 mkdir <project name>
 npm start
 
-\end{verse}
+\end{verbatim}
 
 to install and get the local server running.
 
@@ -62,7 +62,7 @@ to install and get the local server running.
 - .test files (to run tests later)
 - index.js: Where we Insert our App DOM object into the index.html DOM tree (at root).
 
-\item A Most Minimal Example: There are a lot of files in the src folder, but they are not all necessary for react to run. The only necessary file is the index.js file. The following minimial code is needed to insert our content into the index.html DOM tree:
+\item The following minimial code is needed to insert our content into the index.html DOM tree:
 
 \begin{verbatim}
 import React from 'react';
@@ -87,7 +87,7 @@ import { Component } from 'react';
 \item React automatically detects saved changes, and the local server updates. So you can update accordingly.
 \item \textbf{State Field:} Subclasses of the Components class have a state field that we can use. We can link an object to this field, to maintain current state as the Component runs.
 \item \textbf{State:} dynamic data in a React component. This is often used to track variables that will be re-rendered in the UI based on events that occur in the application.
-\item \textbf{React Rule:} Never Directly Modify the State property, if your intention is for changes to occur in the render method based on the updated state values. Use \textit{setState()} instead.
+\item \textbf{React Rule:} \textbf{Never} Directly Modify the State property, if your intention is for changes to occur in the render method based on the updated state values. Use \textit{setState()} instead.
 \item \textbf{But Why??} React is \textit{designed to re-render()} a given component when the setState() function is called. If you modify state directly, the changes will \textbf{not} be reflected in browser.
 \item \textbf{Props:} Just stands for "Property". Data in a React component that gets passed down from its parent. In the parent component, it will pass data down to the child component through attributes in the child component’s JSX.
 \item Practically, how does the passing work? See the example below:
@@ -114,10 +114,10 @@ return )
 
 Note that the SOCIALPROFILEs data object gives us our data for this example. We map() on each element of the object.
 
-Here, our Profile class defines a component that is a child to the SocialProfiles Class. We instantiate an object of the Profile class using the <Profile tag>. In the tag, we have placed properties (id, profile) that are fed into the object instance of Profile. We then can access these properties with \textit{this.props(.profile...)}
+Here, our Profile class defines a component that is a child to the SocialProfiles Class. We instantiate an object of the Profile class using the $<$Profile tag$>$. In the tag, we have placed properties (id, profile) that are fed into the object instance of Profile. We then can access these properties with \textit{this.props(.profile...)}
 \item Visual Summary, \textbf{our modified \textit{create-react-app} project:}
 
-\includegraphics[scale=0.25]{appstructure.png}
+\includegraphics[scale=0.27]{appstructure.png}
 
 \end{itemize}
 
@@ -125,22 +125,18 @@ Here, our Profile class defines a component that is a child to the SocialProfile
 
 \section*{Breaking Down React: React and Web Development:}
 
-\subsection{}
-
-\subsubsection{}
-
 \begin{itemize}
 \item For this section, we will not use the template \textit{create-react-app}, and build a bottom up example.
 \item Instead, we will use transpilation and packaging, with a minimal setup, to produce a basic React application.
-\item In the end, much of the structure in create-react-app is not necessary to get a minimal example to run.
+\item In the end, much of the structure in \textbf{create-react-app} is not necessary to get a minimal example to run.
 \item All an app needs is one index.html page, and index.js page.
 \item You don't even need to run "npm start" or "node react" - you can use CDNs to load React and ReactDOM libriaries straight into the browser.
 \item \textbf{The Minimal Example is as follows:}
 \mitem React CDN script tags at the end of index.html
-\mitem A div root tag in index.html, so React can insert our <App> into the DOM tree.
+\mitem A div root tag in index.html, so React can insert our $<$App$>$ into the DOM tree.
 
 In index.js you can just build an app, render() and insert it as normal.
-\item JSX: This is short-hand syntactic sugar that is transpiled to code that the browser will understand, when we run our react project (with npm start).
+\item \textbf{JSX:} This is syntactic sugar that is transpiled to code that the browser will understand, when we run our react project (with npm start).
 \item Transpilation is typically done with the \textbf{Babel package}.
 \item \textbf{Why use Babel?} Javascript compliance is entirely Browser dependent - and JS core language development is completely separate from Browser development. When we want new features that Browsers may not yet support - we can transpile code to cruder JS so that it can be used in current browsers.
 
@@ -177,17 +173,9 @@ Parcel however is heavier-weight - we don't use it when we launch produciton cod
 A lighter server (live-server) is chosen to strip down the size of the compiled production build, for launch.
 
 \item \textbf{VirtualDOM:} React has its own stripped-down DOM model, so that it can make dynamic changes to the application page. Note: You don't use native DOM methods (like createElement, getElementById()...) in React - it has its own framework calls to do manipuations.
-\item
-\item
-\item
-
 \end{itemize}
 
-\section{Continued Main React Concepts:}
-
-\subsection{}
-
-\subsubsection{}
+\section*{Continued Main React Concepts:}
 
 \begin{itemize}
 \item \textbf{Component Lifecycle:} Components have various event methods, that can be triggered during there operation. In particular, we are interested in when the component starts up, and when it shuts down with two methods:
@@ -258,63 +246,144 @@ We use the state and setState to pull the jokes array. We can then work on it, a
 
 \item \textbf{NOTE (!)} I could not get routing or higher-order functions to work (!!) - course code versions are too old.
 \item Applying routing to the application. With react-router, a single page React application can transform into one with multiple pages of different content. Each page matches a url path of the application to a different component.
-\item
-\item
-\item
 \item \textbf{Higher-order Components:} A higher-order component is one that takes another component as an input. The idea is to treat the component like a function. Have one component as input, and then output an entirely new component based on that input, with new properties, methods, and/or JSX!
 \item
-\item
-\item
+\end{itemize}
+
+\section*{Music Master 2.0}
+
+\begin{itemize}
+\item API service was not available for this project, I just found my own data source instead and did my best. Some useful coding patterns/concepts are below:
+
+\item \textbf{Arrow callbacks - Returning the Callback itself} (instead of return() value):
+
+\begin{verbatim}
+myfunction => props => () => { return(...)}
+\end{verbatim}
+
+This will return the inner function, with access to the outer parameters. In other words, equivalent to:
+
+\begin{verbatim}
+function (props) {
+	return function() { body... }
+}
+\end{verbatim}
 \item
 \end{itemize}
 
-\section{}
-
-\subsection{}
-
-\subsubsection{}
+\section{Redux and more Advanced React:}
 
 \begin{itemize}
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\end{itemize}
+\item Redux is a State Management technology.
+\item It passes state/data between different components in our Application. 
+\item Parent $\rightarrow$ Child data-passing can be prohibitive in complex situations - so we use Redux for a cleaner solution.
+\item \textbf{Main Parts of Redux:}
+\item 1) \textbf{(Global) Store:} Collects the state of the entire application.
+\item 2) \textbf{Reduces:} Describe sections of the store - and how to update them.
+\item \textbf{Actions:} Objects (emitted events) full of data, processed by Reducers.
+\item 4) \textbf{Dispatchers:} Components that create action objects.
+\item This model creates a \textbf{Unidirectional Flow} of data.
 
-\section{}
+\includegraphics[scale=0.25]{redux_chart.png}
 
-\subsection{}
+\item All reducers listen for actions (events that contain data). Each one fires, and checks the type of the action - to see if it handles it.
+\item It is the responsibility of the programmer to check/filter types correctly in each reducer.
+\item Actions are typed objects: they must contain a \textbf{type} field - this is how reducers filter them. An example of an action:
 
-\subsubsection{}
+\begin{verbatim}
 
-\begin{itemize}
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
+export const startGame = () => {
+  return {type:SET_GAME_STARTED, gameStarted:true};
+}
+
+\end{verbatim}
+
+\item Redux and React are two separate frameworks - they must be integrated together in a project. This specifically means: 
+\item 1) Components in React act as dispatchers for actions (Redux)
+\item Components in React will query the Redux Global Store, to interpret application state.
+\item Redux Structuring: The following folders and files are used, for each of the key objects in Redux:
+\item 1) Actions: Stored in an $./src/actions$ folder. \\
+
+There is a settings.js file where all arrow function actions are stored, and exported.\\
+
+There is a types.js file, which lists all of our action types and exports them (so Reducers can use the types). An example of a type constant:
+
+\begin{verbatim}
+
+export const SET_GAME_STARTED = "SET_GAME_STARTED";
+
+\end{verbatim}
+
+\item 2) Reducers: Placed in the $./src/reducers$ folder, in a file called index.js. These are exported as well. An example of a reducer:
+
+\begin{verbatim}
+
+const rootReducer = (state = DEFAULT_SETTINGS, action) => {
+ 
+  switch(action.type) { 
+    case SET_GAME_STARTED:
+      return {
+        gameStarted:action.gameStarted,
+        instructExp:state.instruct
+      }; 
+    case SET_INSTRUCTIONS_EXPANDED:       
+    return { ...state, instructExp:action.instructExp };
+    default:
+      return state;
+  }
+}
+
+\end{verbatim}
+
+\item 3) Dispatching Setup: This is typically done in App.js. See the following code:
+
+\begin{verbatim}
+import React, { Component } from 'react';
+import { connect } form 'react-redux';
+
+class App extends Component {
+  render() {
+    return (
+      <div>React App</div>
+    );
+  }
+}
+
+const componentConnector = connect();
+
+export default App;
+\end{verbatim}
+
+The connect() function connects the App component to Redux, so it can be used as a dispatcher.
+
+\item 4) Setting up the Provider Frame: Note that to use global state, we must wrap our App in another structure called a Provider. We do this in the project index.js file:
+
+\begin{verbatim}
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/App';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux'; 
+import rootReducer from './reducers';
+
+const store = createStore(rootReducer);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>, document.getElementById('root'));
+
+\end{verbatim}
+
+
+\item Reducer Debug Tip: Instead of internal console.log() statements, use the subscribe() function:
+
+\begin{verbatim}
+
+store.subscribe(() => console.log("store.getState()",store.getState()));
+
+\end{verbatim}
+
 \item
 \item
 \item
