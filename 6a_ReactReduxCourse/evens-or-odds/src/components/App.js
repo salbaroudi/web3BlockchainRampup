@@ -4,6 +4,8 @@ import { startGame, cancelGame } from '../actions/settings';
 import { fetchNewDeck } from "../actions/deck";
 import Instructions from "./Instructions";
 import fetchStates from "../reducers/fetchStates";
+import DrawCard from "./DrawCard";
+import Card from './Card'
 
 
 class App extends Component {
@@ -12,7 +14,6 @@ class App extends Component {
     this.props.fetchNewDeck();
   }
   render() {
-    console.log("App THIS::", this);
 
     if (this.props.fetchState === fetchStates.error) {
       return (
@@ -31,6 +32,10 @@ class App extends Component {
           <div>
             <h3> The game is on! </h3>
             <br />
+            <DrawCard />
+            <hr />
+            <Card />
+            <hr />
             <button onClick={this.props.cancelGame}> Cancel Game </button>
           </div>
         ): (
@@ -38,6 +43,7 @@ class App extends Component {
             <h3> A new game awaits </h3>
             <br />
             <button onClick={this.startGame}> Start Game </button>
+            <hr />
             <Instructions />
           </div>
         )
@@ -48,26 +54,14 @@ class App extends Component {
   }
 }
 
-//Used to customize our component connectors.
-//we filter our state, so components have access to specific fields
-//public/private.
 const mapStateToProps = state => {
-  console.log("state", state);
-  //shorthand notation for setting key:value pairs.
-  const {gameStarted, fetchState, message} = state;
+
+  const { gameStarted } = state.settings;
+  const { fetchState, message } = state.deck;
+
   return {gameStarted, fetchState, message};
 }
 
-/*
-const mapDispatchToProps = dispatch => {
-  return {
-    startGame: () => dispatch(startGame()), //note IIFE invocation of action method.
-    cancelGame: () => dispatch(cancelGame()),
-    fetchNewDeck: () => fetchNewDeck(dispatch) //non-standard way.
-  };
-} */
-
-//const componentConnector = connect(mapStateToProps);
 const componentConnector = connect(mapStateToProps, {
 startGame,
 cancelGame,

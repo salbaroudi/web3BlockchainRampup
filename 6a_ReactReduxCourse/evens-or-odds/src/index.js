@@ -5,10 +5,10 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux'; //higher order Component that wraps the application.
 import './index.css';
-import rootReducer from './reducers';
+import rootReducers from './reducers';
 
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(rootReducers, applyMiddleware(thunk));
 
 console.log('store',store);
 console.log('store.getState()', store.getState());
