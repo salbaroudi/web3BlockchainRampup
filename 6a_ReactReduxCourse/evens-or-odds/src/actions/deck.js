@@ -25,6 +25,7 @@ export const fetchNewDeck = () => dispatch => {
 }
 
 export const fetchDrawCard = deck_id => dispatch => {
+  console.log("DeckID:", deck_id)
   return fetch(`${API_ADDRESS}/deck/${deck_id}/draw`)
     .then(response => {
       if (response.status !== 200) {
