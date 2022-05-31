@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { startGame, cancelGame } from '../actions/settings';
-import { fetchDeckResult, fetchNewDeck } from "../actions/deck";
+import { fetchNewDeck } from "../actions/deck";
 import Instructions from "./Instructions";
+import fetchStates from "../reducers/fetchStates";
 
 
 class App extends Component {
@@ -12,6 +13,16 @@ class App extends Component {
   }
   render() {
     console.log("App THIS::", this);
+
+    if (this.props.fetchState === fetchStates.error) {
+      return (
+        <div>
+          <p> Please try reloading the app. An error occured. </p>
+          <p> {this.props.message} </p>
+        </div>
+      )
+    }
+
     return (
       <div>
       <h2>&diams; &clubs; Evens or Odds &hearts; &spades;</h2>
@@ -42,19 +53,25 @@ class App extends Component {
 //public/private.
 const mapStateToProps = state => {
   console.log("state", state);
-
-  return {gameStarted: state.gameStarted};
+  //shorthand notation for setting key:value pairs.
+  const {gameStarted, fetchState, message} = state;
+  return {gameStarted, fetchState, message};
 }
 
+/*
 const mapDispatchToProps = dispatch => {
   return {
-    startGame: () => dispatch(startGame()),
+    startGame: () => dispatch(startGame()), //note IIFE invocation of action method.
     cancelGame: () => dispatch(cancelGame()),
-    fetchNewDeck: () => fetchNewDeck(dispatch)
+    fetchNewDeck: () => fetchNewDeck(dispatch) //non-standard way.
   };
-}
+} */
 
 //const componentConnector = connect(mapStateToProps);
-const componentConnector = connect(mapStateToProps,mapDispatchToProps);
+const componentConnector = connect(mapStateToProps, {
+startGame,
+cancelGame,
+fetchNewDeck
+});
 
 export default componentConnector(App);
