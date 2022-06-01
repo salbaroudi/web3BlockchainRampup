@@ -275,17 +275,19 @@ function (props) {
 
 \begin{itemize}
 \item Redux is a State Management technology.
+\item It handles all the underlying data for your React application by enforcing a universal flow of data - that components can read from and add to using dispatchable actions.
 \item It passes state/data between different components in our Application. 
 \item Parent $\rightarrow$ Child data-passing can be prohibitive in complex situations - so we use Redux for a cleaner solution.
 \item \textbf{Main Parts of Redux:}
 \item 1) \textbf{(Global) Store:} Collects the state of the entire application.
-\item 2) \textbf{Reduces:} Describe sections of the store - and how to update them.
+\item 2) \textbf{Reduces:} Reducers split up the store and describe how sections of the store should update.
 \item \textbf{Actions:} Objects (emitted events) full of data, processed by Reducers.
 \item 4) \textbf{Dispatchers:} Components that create action objects.
 \item This model creates a \textbf{Unidirectional Flow} of data.
 
 \includegraphics[scale=0.25]{redux_chart.png}
 
+\item Actions are objects full of data that the reducers listen to. These actions are dispatchable by components. And reducers will then use the action data to update the redux store.
 \item All reducers listen for actions (events that contain data). Each one fires, and checks the type of the action - to see if it handles it.
 \item It is the responsibility of the programmer to check/filter types correctly in each reducer.
 \item Actions are typed objects: they must contain a \textbf{type} field - this is how reducers filter them. An example of an action:
@@ -299,9 +301,10 @@ export const startGame = () => {
 \end{verbatim}
 
 \item Redux and React are two separate frameworks - they must be integrated together in a project. This specifically means: 
+\item React Redux provides the connection between the redux system and the React components. Particularly, the Provider component gives each component access to the redux store. And the connect function allows each component to customize what parts of the redux store it wants to read, and what actions the component should be able to dispatch.
 \item 1) Components in React act as dispatchers for actions (Redux)
 \item Components in React will query the Redux Global Store, to interpret application state.
-\item Redux Structuring: The following folders and files are used, for each of the key objects in Redux:
+\item \textbf{Redux Structuring:} The following folders and files are used, for each of the key objects in Redux:
 \item 1) Actions: Stored in an $./src/actions$ folder. \\
 
 There is a settings.js file where all arrow function actions are stored, and exported.\\
@@ -356,6 +359,11 @@ export default App;
 
 The connect() function connects the App component to Redux, so it can be used as a dispatcher.
 
+\item \textbf{MapStateToProps}: parameter one of the react-redux connect function customizes which part of the redux store the component will have access to.
+
+\item \textbf{MapDispatchToProps}: parameter two of the react-redux connect function specifies which action creators the component should be able to dispatch.
+
+
 \item 4) Setting up the Provider Frame: Note that to use global state, we must wrap our App in another structure called a Provider. We do this in the project index.js file:
 
 \begin{verbatim}
@@ -384,25 +392,46 @@ store.subscribe(() => console.log("store.getState()",store.getState()));
 
 \end{verbatim}
 
-\item
-\item
+\item Redux Middleware code runs in between the point that an action gets dispatched and the reducers receive the action objects. Think of it as extensions for the redux system; it’s useful for adding new capabilities to the underlying redux logic. One such middleware is redux-thunk.
+
+\item Redux thunk is a library that allows for asynchronous actions to be dispatched. Normally, actions are plain objects. But in the case of using the fetch method, to make an api call, an asynchronous action is useful in order to dispatch different kinds of actions based on the result of the api call.
+
+\item LocalStorage is a JavaScript object that can be used to store items in a key-value structure within the browser.
+
+\item \textbf{Dealing with Cross Origin Resource Sharing:} When making a fetch() request to a remote server, the request will often fail because of the CORS policy. 
+\item \textbf{What is CORS?}
+
+\includegraphics[scale=0.22]{cors.png}
+
+This is an internet policy designed to stop applications from making rouge requests to untrusted sources. The policy works as follows: when our local app sends a request to a remote server, our browser / request protocol checks to see if we are listed as an approved connection for the server. If we have an outgoing request, and the external resource has no knowledge of our local app, it is rejected (Same Origin Policy).
 \item
 \end{itemize}
 
-\section{}
-
-\subsection{}
-
-\subsubsection{}
-
+\section*{Redux Project: Reaction:}
 \begin{itemize}
+\item For this applicaiton, we will implement the Publisher-Subscriber Architecture for our app, to allow subscribers to a channel to post messages, and reply with Emoji's.
+\item Pub/Sub is a pattern that enables communication in a network based on publishing messages to channels, and subscribing to those messages.
+\item We will have multiple instances of the application running. Redux Data Flow is structured as follows:
+
+\includegraphics[scale=0.20]{pubsub.png}
+
+\item The steps our application will take, to send a message, are as follows:
+\includegraphics[scale=0.20]{pubsublist.png}
+
 \item
 \item
 \item
+\item React context is a way to share data between many components, without having to manually pass objects down through props.
+
 \item
 \item
 \item
+\item The Context Provider Component uses a value property to provide data to any nested component through its context field.
+
 \item
+\item
+\item The Redux devtools is an extension that allows you to examine the redux store state, and see actions being dispatched in real time.
+
 \item
 \item
 \item
