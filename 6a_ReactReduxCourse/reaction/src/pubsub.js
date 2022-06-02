@@ -1,24 +1,26 @@
 import PubNub from "pubnub";
+import { createContext } from "react";
 import pubnubConfig from "./pubnub.config";
-
-const pubnub = new PubNub(pubnubConfig);
 
 export const MESSAGE_CHANNEL = "MESSAGE_CHANNEL";
 
-//Async functions.
-pubnub.subscribe({channels: [MESSAGE_CHANNEL]});
-//An event callback that fires everytime there is a change to the channel.
-//We also get a message when new users subscribe to the channel!
-pubnub.addListener({
-  message: messageObject => {
-    console.log("messageObject", messageObject);
-  }
-});
+class PubSub {
+  constructor() {
+    this.pubnub = new PubNub(pubnubConfig);
 
-//This needs to run last...
-setTimeout(() => {
-  pubnub.publish({
-    message: "foo",
-    channel: MESSAGE_CHANNEL
-  });
-},1000);
+    this.pubnub.subscribe({channels: [MESSAGE_CHANNEL]});
+  }
+
+  addListener = listenerConfig => {
+    this.pubnub.addListener(listenerConfig);
+  }
+
+  publish = message => {
+    console.log("Publish Message:", message);
+
+    this.pubnub.publish({message,channel: MESSAGE_CHANNEL});
+  }
+}
+
+export const PubSubContext = createContext();
+export default PubSub;
