@@ -26,8 +26,8 @@
 %Other Colors: ForestGreen,Cerulean,Salmon,Purple, Red, White
 
 \twocolumn
-\title{Title Here}
-\author{Author Name Here}
+\title{React and Redux Bootcamp:}
+\author{Sean al-Baroudi}
 
 \begin{document}
 
@@ -54,9 +54,9 @@ npm start
 to install and get the local server running.
 
 \item \textbf{Project Structure:}
-\item \textbf{./nodemodules:} All locally installed node dependences are stored here.
-\item \textbf{./public:} index.html (front page, robots.txt and favicons stored here.
-\item \textbf{./src:} Contains the React Apps (self-contained pieces of interface+code), and support files, including:
+\mitem \textbf{./nodemodules:} All locally installed node dependences are stored here.
+\mitem \textbf{./public:} index.html (front page, robots.txt and favicons stored here.
+\mitem \textbf{./src:} Contains the React Apps (self-contained pieces of interface+code), and support files, including:
 
 - App.js (contains template React App)
 - .test files (to run tests later)
@@ -74,23 +74,19 @@ document.getElementById("root"));
 \item In react, we typically bundle reusable UI elements into \textbf{Components}. 
 \item \textbf{Components:} reusable pieces of React code to control part of the user interface. Components capture the structure of UI, and can have internal data to track the user behavior throughout the lifetime of the app.
 
-\item A react app will contain many different \textbf{Components}.
-\item Naturally, react has a Component class that can be imported from the react core library.
-
 \begin{verbatim}
 import { Component } from 'react';
 \end{verbatim}
 
 \item Note that Classes, extended Sub-Classes and object Instances are used heavily in React - so be familiar with OOP.
 \item A typical design pattern in React will be to extend template component classes, and add additional fields/methods to implement your application.
-\item If you write javascript in the App.js and index.js - console.log() will output directly to a browser inspector.
 \item React automatically detects saved changes, and the local server updates. So you can update accordingly.
 \item \textbf{State Field:} Subclasses of the Components class have a state field that we can use. We can link an object to this field, to maintain current state as the Component runs.
-\item \textbf{State:} dynamic data in a React component. This is often used to track variables that will be re-rendered in the UI based on events that occur in the application.
+\item \textbf{State:} Dynamic data in a React component. This is often used to track variables that will be re-rendered in the UI based on events that occur in the application.
 \item \textbf{React Rule:} \textbf{Never} Directly Modify the State property, if your intention is for changes to occur in the render method based on the updated state values. Use \textit{setState()} instead.
 \item \textbf{But Why??} React is \textit{designed to re-render()} a given component when the setState() function is called. If you modify state directly, the changes will \textbf{not} be reflected in browser.
 \item \textbf{Props:} Just stands for "Property". Data in a React component that gets passed down from its parent. In the parent component, it will pass data down to the child component through attributes in the child component’s JSX.
-\item Practically, how does the passing work? See the example below:
+\item \textbf{How does the passing work?} See the example below:
 
 \begin{verbatim}
 class Profile extends Component {
@@ -126,9 +122,7 @@ Here, our Profile class defines a component that is a child to the SocialProfile
 \section*{Breaking Down React: React and Web Development:}
 
 \begin{itemize}
-\item For this section, we will not use the template \textit{create-react-app}, and build a bottom up example.
-\item Instead, we will use transpilation and packaging, with a minimal setup, to produce a basic React application.
-\item In the end, much of the structure in \textbf{create-react-app} is not necessary to get a minimal example to run.
+\item Much of the structure in \textbf{create-react-app} is not necessary to get a minimal example to run.
 \item All an app needs is one index.html page, and index.js page.
 \item You don't even need to run "npm start" or "node react" - you can use CDNs to load React and ReactDOM libriaries straight into the browser.
 \item \textbf{The Minimal Example is as follows:}
@@ -155,7 +149,7 @@ parcel <index.html>
 
 It will trace back all code depedencies from here.
  
-\item Parcel Folders (in project): These will appear after you run parcel the first time:
+\item \textbf{Parcel Folders (in project):} These will appear after you run parcel the first time:
 \mitem \textbf{.cache}: Stores compiled elements to minimize recompilation later.
 \mitem \textbf{dist:} Folder where bundled+transpiled JS code is stored - will rewrite index.html script links to point to this directory!
 \item Using Parcel for Dev and Production: Parcel has a hot-wire feature - we can run it with the index.html, and it will auto-update all our code as we develop it.
@@ -179,8 +173,9 @@ A lighter server (live-server) is chosen to strip down the size of the compiled 
 
 \begin{itemize}
 \item \textbf{Component Lifecycle:} Components have various event methods, that can be triggered during there operation. In particular, we are interested in when the component starts up, and when it shuts down with two methods:
-\item \textbf{componentDidMount():} Called after component is loaded. If the method has to perform setup work or a fetch(), write this code in here.
-\item \textbf{ComponentWillUnmount():} Called just before a Component is unmounted and destroyed. Use this as a takedown/cleanup/signalling method.
+\mitem \textbf{componentDidMount():} Called after component is loaded. If the method has to perform setup work or a fetch(), write this code in here.
+\mitem \textbf{ComponentWillUnmount():} Called just before a Component is unmounted and destroyed. Use this as a takedown/cleanup
+/signalling method.
 \item Both methods above are written in the Component extended class - use non-first class functions only. "function" keyword is not required (its a JS class!).
 \item \textbf{Stateless Functional Components:} Simplified Notation can be used, if our components contain no state. See Example Below:
 
@@ -210,9 +205,10 @@ const SimpleComp = props => {
 \end{verbatim}
 
 
-\item \textbf{fetch():} Default Node/React method for making HTTP calls to external sources. When apps communicate by APIs, HTTP+fetch is typically how it is done.
+\item \textbf{fetch():} Default Node/React method for making HTTP calls to external sources.
 \item fetch() returns a JS Promise - and is an asyncronous function.
 \item \textbf{Fetch Example 1:} Get a JSON object and print it:
+
 \begin{verbatim}
 fetch("http://localhost:3005/random_joke")
     .then(response => console.log(response.json()))
@@ -228,7 +224,6 @@ Will print out json object to console. Basic errors also handled.
   state = {...jokes: []};
 
   fetchJokes = () => {
-    //Same remainder code, regardless
     fetch("http://localhost:3005/random_ten")
     .then(response => response.json())
     .then(json => this.setState({jokes:json}))
@@ -242,10 +237,8 @@ Will print out json object to console. Basic errors also handled.
  }
 \end{verbatim}
 
-We use the state and setState to pull the jokes array. We can then work on it, avoiding promise/fucntional notation later on down the in the code.
+We use the state and setState to pull the jokes array.
 
-\item \textbf{NOTE (!)} I could not get routing or higher-order functions to work (!!) - course code versions are too old.
-\item Applying routing to the application. With react-router, a single page React application can transform into one with multiple pages of different content. Each page matches a url path of the application to a different component.
 \item \textbf{Higher-order Components:} A higher-order component is one that takes another component as an input. The idea is to treat the component like a function. Have one component as input, and then output an entirely new component based on that input, with new properties, methods, and/or JSX!
 \item
 \end{itemize}
@@ -271,7 +264,7 @@ function (props) {
 \item
 \end{itemize}
 
-\section{Redux and more Advanced React:}
+\section*{Redux and more Advanced React:}
 
 \begin{itemize}
 \item Redux is a State Management technology.
@@ -301,7 +294,9 @@ export const startGame = () => {
 \end{verbatim}
 
 \item Redux and React are two separate frameworks - they must be integrated together in a project. This specifically means: 
-\item React Redux provides the connection between the redux system and the React components. Particularly, the Provider component gives each component access to the redux store. And the connect function allows each component to customize what parts of the redux store it wants to read, and what actions the component should be able to dispatch.
+\item React Redux provides the connection between the redux system and the React components. Particularly: 
+\mitem The Provider component wraps the App (in index.html) gives each component access to the Redux store.
+\mitem The connect() function allows each component to customize what parts of the redux store it wants to read, and what actions the component should be able to dispatch.
 \item 1) Components in React act as dispatchers for actions (Redux)
 \item Components in React will query the Redux Global Store, to interpret application state.
 \item \textbf{Redux Structuring:} The following folders and files are used, for each of the key objects in Redux:
@@ -359,9 +354,10 @@ export default App;
 
 The connect() function connects the App component to Redux, so it can be used as a dispatcher.
 
-\item \textbf{MapStateToProps}: parameter one of the react-redux connect function customizes which part of the redux store the component will have access to.
+\item \textbf{MapStateToProps}: The first argument to the connect function. Allows you to specify what data the component should have from the redux store. You map the redux store state to the props object of the component.
 
-\item \textbf{MapDispatchToProps}: parameter two of the react-redux connect function specifies which action creators the component should be able to dispatch.
+\item \textbf{MapDispatchToProps}: The second argument to the connect function. Allows you to specify what methods should be made available to the component (through props), that will be able to dispatch the results of action creators to the store.
+
 
 
 \item 4) Setting up the Provider Frame: Note that to use global state, we must wrap our App in another structure called a Provider. We do this in the project index.js file:
@@ -394,23 +390,35 @@ store.subscribe(() => console.log("store.getState()",store.getState()));
 
 \item Redux Middleware code runs in between the point that an action gets dispatched and the reducers receive the action objects. Think of it as extensions for the redux system; it’s useful for adding new capabilities to the underlying redux logic. One such middleware is redux-thunk.
 
-\item Redux thunk is a library that allows for asynchronous actions to be dispatched. Normally, actions are plain objects. But in the case of using the fetch method, to make an api call, an asynchronous action is useful in order to dispatch different kinds of actions based on the result of the api call.
+\item Redux \textbf{thunk} is a library that allows for asynchronous actions to be dispatched. Normally, actions are plain objects. But in the case of using the fetch method, to make an api call, an asynchronous action is useful in order to dispatch different kinds of actions based on the result of the api call.
 
 \item LocalStorage is a JavaScript object that can be used to store items in a key-value structure within the browser.
 
 \item \textbf{Dealing with Cross Origin Resource Sharing:} When making a fetch() request to a remote server, the request will often fail because of the CORS policy. 
 \item \textbf{What is CORS?}
+\item \textbf{Definitions (for CORS):}
+\mitem origin: the server the application is running from.
+\mitem (an) origin: the source of a particular resource.
+\mitem permitted origin: a sourced allowed by the browser to serve content - it lives outside the application itself.
+\mitem cross-origin: when the providre and destination of a resource do not match.
+\item Simple Request: One defined as a GET/HEAD/POST method with safe header fields. See \cite{cors} for details.
+\item Same Origin Policy (Summary): A web application using XMLHttpRequest and Fetch() can only request resources from the same origin the application was loaded from unless the response from other origins includes the \textbf{right CORS headers}.
+\item CORS only applies to HTTP requests to external sources, from scripts. This is to suppress unwanted requests from hijacked applications.
+\item \textbf{Different Header Options:}
+\item \textit{External Server:} the Header option for CORS is \textit{Access-Control-Allow-Origin} - this is set in the response object from the external source. If set to "*", any application can request resources from the server. For better security settings - a resource provider will have a short-list of approved applicatoins.
+\item \textit{App Origin:} For a non-simple request (not a simple GET/POST...), a preflight request is sent to the external server by the browser. This consists of an OPTIONS request with the \textit{Access-Control-Reqest-Method} and \textit{Access-Control-Request-Headers} fields set. Once the response is sent back and is approved by browser, the non-simple request is sent out.
 
 \includegraphics[scale=0.22]{cors.png}
 
-This is an internet policy designed to stop applications from making rouge requests to untrusted sources. The policy works as follows: when our local app sends a request to a remote server, our browser / request protocol checks to see if we are listed as an approved connection for the server. If we have an outgoing request, and the external resource has no knowledge of our local app, it is rejected (Same Origin Policy).
-\item
+
+
+ 
 \end{itemize}
 
 \section*{Redux Project: Reaction:}
 \begin{itemize}
 \item For this applicaiton, we will implement the Publisher-Subscriber Architecture for our app, to allow subscribers to a channel to post messages, and reply with Emoji's.
-\item Pub/Sub is a pattern that enables communication in a network based on publishing messages to channels, and subscribing to those messages.
+\item Pub/Sub: A software pattern that allows publishers to send information to channels that subscribers will listen to. A good networking option that can reduce the usual approach of keeping a list of all addresses that are connected to the network.
 \item We will have multiple instances of the application running. Redux Data Flow is structured as follows:
 
 \includegraphics[scale=0.20]{pubsub.png}
@@ -418,283 +426,121 @@ This is an internet policy designed to stop applications from making rouge reque
 \item The steps our application will take, to send a message, are as follows:
 \includegraphics[scale=0.20]{pubsublist.png}
 
-\item
-\item
-\item
-\item React context is a way to share data between many components, without having to manually pass objects down through props.
-
-\item
-\item
-\item
+\item \textbf{React Context:} A way to share data between many React components without having to pass that data down manually through props. A component will look to the nearest parent component, that is a context Provider, to get the values that it can use for its own component `context` field.
 \item The Context Provider Component uses a value property to provide data to any nested component through its context field.
-
-\item
-\item
 \item The Redux devtools is an extension that allows you to examine the redux store state, and see actions being dispatched in real time.
+\item
+\item Connecting to React DevTools: Download app in Chromium, and use the folloiwng createStore() arguments:
 
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
+\begin{verbatim}
+
+const store = createStore(rootReducer,window.__REDUX
+_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+\end{verbatim}
+\item A diagram of our project is as follows:
+
+\includegraphics[scale=0.3]{reaction_flowdiagram.png}
+
+
+\end{itemize}
+
+
+
+\section*{Create Backend APIs for React Apps:}
+\begin{itemize}
+\item Express is a framework built on top of Node.js used for starting servers and building web APIs.
+\item Express middleware is functionality that runs before every request, to process information about the request, add headers to the response, perform logging, and any other kind of useful functionality. Code Examples Below:
+
+\begin{verbatim}
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+})
+
+\end{verbatim}
+
+These middleware modules act as listeners that are fired before GET() listeners are engaged. the Next() method allows us to continue processing in other middleware listeners. The RES() object allows us to respond to the client prematurely.
+\item Our express can serve requests with the get() method:
+
+\begin{verbatim}
+app.get('/ping', (req,res) => {
+  res.send('pong')
+});
+
+app.get("/stories", (req, res) => {
+  res.json(stories);
+});
+\end{verbatim}
+
+Note: Avoid appending paths with "." (Linux Habit). Error 404 will occur!
+
+
+\item \textbf{CORS policy for API:} Adding the `Access-Control-Allow-Origin` with the `*` argument will allow any frontend addresses to be considered as part of the server’s origin. This helps get past the same origin policy check implemented by the browser.
+\item API Wrappers are servers that perform inner requests to other APIs. These can be used to combine multiple API requests into one overall request, to add a more open `Access-Control-Allow-Origin` header, and to accomplish other custom functionality!
+\item Serving a React Frontend can occur within the same server as its backend API. Serve a static directory to the relative path where your React code is built.
+\item To do this, we merge our client and api projects. This involves splicing the package.json file of the client project into the package.json of our express project. See git directory for details. Run npm i to install all packages in the root directory.
+\item We can get our API to serve front end files with the following code:
+
+\begin{verbatim}
+const path = require("path");
+
+...
+
+app.use(express.static(path.join(
+__dirname, "client/dist")));
+\end{verbatim}
+\item \textbf{Why does this work?}
+
+Because the index.html file of the react app has been put in client/dist by parcel running in the background. Note our modified npm start script:
+
+\begin{verbatim}
+    "start": "npm run build-client && node ./",
+\end{verbatim}
+
+As long as the paths dont' clobber, we can access React content and our API with the same localhost:3000 domain!
+
+\item \textbf{Caveat:} If we do this, dynamic page loading is disabled. If we want to develop our API and React App, and see the front end update on saves, we can run:
+
+\begin{verbatim}
+Tab1: npm run dev
+Tab2: npm run dev-client
+\end{verbatim}
 \item
 \end{itemize}
 
-\section{}
-
-\subsection{}
-
-\subsubsection{}
+\section*{Deployment of our App (Heroku):}
 
 \begin{itemize}
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\end{itemize}
+\item \textbf{Steps for launching a Heroku App:}
 
-\section{}
+\item 000) Sign up for Heroku, setup 2FA, install on your desktop.
 
-\subsection{}
+\item 00) Run *heroku login* on command line, and connect.
 
-\subsubsection{}
+\item 0) Make sure this project is uploaded to its own github repository before you start.
 
-\begin{itemize}
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\end{itemize}
+\item 1) Now Adjustments to our App need to be done:
 
-\section{}
+\item a) Adjust the fetch() URL from \textit{"localhost:3000..."} to \textit{`$\{$document.location.origin$\}$`}.
 
-\subsection{}
+\item   b) Add an environment generated port number to index.js: with \textit{const PORT = process.env.PORT $\vert \vert$ 3001;}
 
-\subsubsection{}
+\item 2) Once changes are complete, commit changes to github repository one more time.
 
-\begin{itemize}
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\end{itemize}
+\item 3) Run \textit{git push heroku main} to run the application in the cloud.
 
-\section{}
+\item 4) (Optional): See the Heroku setting panel to adjust port/url/mapping etc. Remember to update the github repo link if you make this change with:  \textit{git remote set-url $<$new heroku url$>$}
 
-\subsection{}
-
-\subsubsection{}
-
-\begin{itemize}
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\end{itemize}
-
-\section{}
-
-\subsection{}
-
-\subsubsection{}
-
-\begin{itemize}
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\end{itemize}
-
-\section{}
-
-\subsection{}
-
-\subsubsection{}
-
-\begin{itemize}
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\end{itemize}
-
-\section{}
-
-\subsection{}
-
-\subsubsection{}
-
-\begin{itemize}
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\end{itemize}
-
-\section{}
-
-\subsection{}
-
-\subsubsection{}
-
-\begin{itemize}
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\end{itemize}
-
-\section{}
-
-\subsection{}
-
-\subsubsection{}
-
-\begin{itemize}
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
-\item
 \item
 \end{itemize}
 
 
 \begin{thebibliography}{9}
 
-\bibitem{ganacheSE}
-\url{https://ethereum.stackexchange.com/questions/109847/how-to-install-ganache-ui-on-ubuntu-20-04-lts}
-\bibitem{}
-\url{}
-\bibitem{}
-\url{}
-\bibitem{}
-\url{}
-\bibitem{}
-\url{}
-\bibitem{}
-\url{}
-
-	
+\bibitem{cors}
+\url{https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS}	
 \end{thebibliography}
 
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { startGame, cancelGame } from '../actions/settings';
 import { fetchNewDeck } from "../actions/deck";
-import Instructions from "./Instructions";
+import Instructions from "./Instructions" //All of our Components
 import fetchStates from "../reducers/fetchStates";
 import DrawCard from "./DrawCard";
 import Card from './Card';
@@ -67,6 +67,7 @@ const mapStateToProps = state => {
   return {gameStarted, fetchState, message};
 }
 
+//Inline object is MappingDispatchtoProps.
 const componentConnector = connect(mapStateToProps, {
 startGame,
 cancelGame,

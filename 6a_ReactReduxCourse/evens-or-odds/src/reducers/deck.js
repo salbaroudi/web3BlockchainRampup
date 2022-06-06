@@ -1,7 +1,7 @@
 import { DECK, DECK_DRAW } from "../actions/types.js";
 import fetchStates from './fetchStates';
 
-
+//Default structure + function init design pattern, again.
 const DEFAULT_DECK = {
   deck_id: "",
   remaining: 0,

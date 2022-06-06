@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import CreateReaction from './CreateReaction';
 
+//Stateless subcomponent that displays the reactions we received.
 const MessageReactions = ({ messageReactions }) => {
   if (!messageReactions) return null;
 
@@ -19,7 +20,7 @@ const MessageReactions = ({ messageReactions }) => {
     })
   )
 }
-
+//Stateless component that displays all messages we have so far.
 const MessageBoard = ({ messages, reactions }) => {
   return (
     <div>
@@ -44,6 +45,6 @@ const MessageBoard = ({ messages, reactions }) => {
   )
 }
 
-
+//First arg is MapStateToProps
 export default connect(
 ({messages,reactions}) => ({messages,reactions}))(MessageBoard);

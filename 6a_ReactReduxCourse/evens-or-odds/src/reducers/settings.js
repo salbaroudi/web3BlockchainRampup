@@ -1,6 +1,7 @@
 import {SET_GAME_STARTED, SET_INSTRUCTIONS_EXPANDED } from "../actions/types.js";
 
-
+//Same design pattern. Default object defined for init case,
+//and set as a default argument in the reducer prototype.
 const DEFAULT_SETTINGS = {
   gameStarted: false,
   instructionsExpanded: false

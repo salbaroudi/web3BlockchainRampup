@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { setUsername } from "../actions/setusername";
+//We just import the setUsername action directly, and call it.
+
 
 const SetUsername = ({ setUsername }) => {
   return (
@@ -11,4 +13,5 @@ const SetUsername = ({ setUsername }) => {
   )
 }
 
+//Here, we have no props from connect, but we do set a dispatch.
 export default connect(null, { setUsername })(SetUsername);
