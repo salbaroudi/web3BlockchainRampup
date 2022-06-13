@@ -100,8 +100,6 @@ function decr() public {
 
 ```
 
-
-
 #### Smart Contracts Caveats:
 
 - We have two accounts types in Ethereum: Externally Owned Accounts (EOAs) and Smart Contract Accounts.
@@ -119,5 +117,134 @@ function doSomething() public {
 
   //do the thing...
 }
+
+```
+- Unpacking an address in header: This is a standard coding pattern:
+
+```
+    function withdrawMoney(address payable _to, uint64 _amount) public {
+
+    }
+```
+- Smart Contract constructor(): This is used to initialize a smart contract. This can only be run once
+
+```
+constructor() {
+    owner = msg.sender;
+}
+
+```
+- What do Smart Contract transactions look like (JSON View)? They have an empty to address, and the data field is field. Any transaction matching this request will be interpreted as a smart contract query.
+
+- Smart contracts can be destroyed with a selfdestruct() command. Note: You can stop the contract, but the block transactions can never be erased.
+
+```
+
+function destroySmartContract(address payable _to) public {
+    require(msg.sender == owner, "No soup for you.");
+    selfdestruct(_to);
+}
+
+```
+- Transactions are considered atomic state changes.
+- Exceptions and errors revert (or prevent) state changes.
+- Solidity does not have robust methods for catching errors.
+- There are a few different ways we can deal with errors:
+
+   1) assert(condition,"msg"): Used to check internal code invariants - only use for serious errors. Note that if an assert fails, all of the users gas will be used (no portion returned).
+   2) require(condition, "msg"): Used to check user inputs. If this fires, the remaining gas left over is returned to user.
+   3) Revert: A require statement with no error message portion - alternative way to do require()s.
+
+#### Complex Data Type Caveats:
+
+- **Mapping:** is (like) a HashMap in JS. Mappings are dynamic structures that auto-initialize, and have no limits.
+
+    - you do not specify a length, nor malloc anything with these structures.
+
+
+- **Struct:** Similar to C structs, these allow a user to construct their own custom data types. Use dot notation to access
+the fields. Structs can contain other structs and complex datatypes, but never themselves.
+
+- **Arrays:** Are fixed datatype, used for bytes structures. These are discouraged from use (like strings).
+
+- **Enumerations:** A limited data structure that maps objects to integers.
+
+
+#### Fallbacks, Inheritence, Modifiers, Events...
+- The fallback function receive() is used as a catch-all function if one of the following conditions occurs:
+
+  1) An entity sends ether to a contract, with no function specified.
+
+  2) The call function signature in msg does not match any function in the SC.
+
+Code for the receive function is below:
+
+```
+
+receive() external payable {
+    receiveMoney();
+}
+
+
+
+```
+
+- Functional Access Hierarchy:
+
+  1) Writable / Payable: These functions change smart contract state. They require a Tx with gas to enact on the network.
+
+  2) View: Are read only functions. They read the state of the smart contract.
+
+  3) Pure:  Are stateless functions, that do not interact with or read state.
+
+- Note: Functions higher up can call those below. Doesn't go the other way.
+- Any change in state requires a transaction, and gas to power the network to perform the said change.
+- Read-only/pure functions *do not require transactions* - they make calls() on the network. As all SC states are identical across nodes, we can just make a *local node request*.
+
+- Levels of Function Visibility: Internal = SC, External = EOAs or other SCs.
+  - Public: Internal/External calls allowed.
+  - Private: Internal calls only.
+  - External: External calls only (so functions inside SC can't call).
+  - Internal: Only SC itself, and derived contracts can call.
+
+- Inheritance:
+- Solidity allows for Multiple-Inheritance:
+
+```
+contract myContract is X,Y,Z,W ... {
+
+}
+
+```
+- if a function is present in multiple super-contracts, the instance used comes from the last contract (W).
+- when we deploy myContract (above), we don't also deploy X,Y,Z,W...myContract can use their functions, however.
+
+
+- **Return values:**
+- You **cannot return values from a function, to outside an SC**. If an entity calls a function from outside the SC via a Tx,
+we cannot send a return value back via the transaction confirmation.
+- To return information about a Tx, we **emit events**.
+- Usage of Events:
+
+  1) To return information to a Tx caller.
+  2) To Trigger an event externally.
+  3) For Cheap data storage.
+
+- Data storage on ETH chain is prohibitively expensive (always do off-chain).
+- Interestingly: functions inside the SC cannot read the event emitted! Only outside entities can.
+- If a super-contract emits events, any derived contract will emit events also.
+- Code Example:
+
+```
+...
+event TokensSent(address _from, address _to, uint _amount);
+
+...
+
+function sendToken(address _to, uint _amount) public returns(bool) {
+  ...
+    emit TokensSent(msg.sender, _to, _amount);
+}
+
 
 ```

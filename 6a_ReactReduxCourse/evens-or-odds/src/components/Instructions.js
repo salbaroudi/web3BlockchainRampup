@@ -27,7 +27,7 @@ const Instructions = props => {
       </div>
     )
   }
-
+//first is a state2props, 2nd is dispatches2props
 export default connect(
   state => ({ instructionsExpanded: state.settings.instructionsExpanded }),
 {expandInstructions, collapseInstructions}
