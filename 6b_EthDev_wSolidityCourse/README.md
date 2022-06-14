@@ -248,3 +248,26 @@ function sendToken(address _to, uint _amount) public returns(bool) {
 
 
 ```
+
+#### ABIs, Functional Signatures, Debugging, Gas:
+
+- **ABI: Application Binary Interface:**
+- this is primarily how an external agent interacts with an SC.
+- this lists all the functions and public variables an agent can call.
+- Is encoded in a JSON object - is how an SC makes itself known to others.
+
+- **Functional Signature:** A unique hashing to identify a function in an SC.
+- when we make a call/Tx to an SC, we use the functional hash, not the string name.
+- *How Hashes are formed:* First4Bytes(Keccak256("functionname(type1,type2...)"))
+
+- **Debugging:**
+- Is more crude for Remix. You can only debug on transactions.
+- On the plus side: Gives a full list of opcodes, the stack, gas usage of each opcode
+- Note: Use the debugger for late-stage gas optimizations.
+
+- **Gas**:
+- is not Ether.
+- is deliberately separate from ether - to detach execution costs from Ether market price.
+- Gas increases when network loads are high, and decreases when they are low.
+- **Why??** If Eth price was coupled to network usage, miners could circlejerk the network to maximize the price of
+ether (submit lots of useless, high computation transactions.).
