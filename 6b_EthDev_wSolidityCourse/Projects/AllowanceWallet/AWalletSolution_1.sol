@@ -23,6 +23,7 @@ For regular users, they do draw down.
 */
 
 contract SharedWallet is Ownable {
+
     //only used inside contract. This is why there is a return value.
     function isOwner() internal view returns(bool) {
         return owner() == msg.sender;
