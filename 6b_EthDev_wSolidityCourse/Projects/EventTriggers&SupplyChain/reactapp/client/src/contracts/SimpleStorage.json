@@ -28,15 +28,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"read\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"newValue\",\"type\":\"uint256\"}],\"name\":\"write\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/user/Documents/CodeProjects/Blockchain_Rampup/6b_EthDev_wSolidityCourse/Projects/EventTriggers&SupplyChain/reactproject/truffle/contracts/SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/user/Documents/CodeProjects/Blockchain_Rampup/6b_EthDev_wSolidityCourse/Projects/EventTriggers&SupplyChain/reactproject/truffle/contracts/SimpleStorage.sol\":{\"keccak256\":\"0x13e8d9b325f86ac1007a738ded988faca89d95e2e855e38079dc6f00eea1d02a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bcf8902e17845e064ae817c3cc7afeef14bb749e7dfcd6b25003af832d3c670f\",\"dweb:/ipfs/QmaknJEERLxRRLFLdg752XJKXZMnSWFuMEvZ85Un8UeoL5\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b5060c78061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c80632f048afa14603757806357de26a4146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea264697066735822122051632bff46d6a281de94a4aa3898f11bb13b34f000da6fa63349bd2c4be8318864736f6c634300060c0033",
-  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c80632f048afa14603757806357de26a4146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea264697066735822122051632bff46d6a281de94a4aa3898f11bb13b34f000da6fa63349bd2c4be8318864736f6c634300060c0033",
-  "sourceMap": "66:187:0:-:0;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "66:187:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;184:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;111:69;;;:::i;:::-;;;;;;;;;;;;;;;;;;;184:67;238:8;230:5;:16;;;;184:67;:::o;111:69::-;148:7;170:5;;163:12;;111:69;:::o",
-  "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\ncontract SimpleStorage {\n  uint256 value;\n\n  function read() public view returns (uint256) {\n    return value;\n  }\n\n  function write(uint256 newValue) public {\n    value = newValue;\n  }\n}\n",
-  "sourcePath": "/home/user/Documents/CodeProjects/Blockchain_Rampup/6b_EthDev_wSolidityCourse/Projects/EventTriggers&SupplyChain/reactproject/truffle/contracts/SimpleStorage.sol",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"read\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"newValue\",\"type\":\"uint256\"}],\"name\":\"write\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/user/Documents/CodeProjects/Blockchain_Rampup/6b_EthDev_wSolidityCourse/Projects/EventTriggers&SupplyChain/reactapp/truffle/contracts/SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/user/Documents/CodeProjects/Blockchain_Rampup/6b_EthDev_wSolidityCourse/Projects/EventTriggers&SupplyChain/reactapp/truffle/contracts/SimpleStorage.sol\":{\"keccak256\":\"0x66962a1f3adacf1573940306e982ec50cab0bf06c1ffb51c4b7d53de323ca42f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4639605999e050c27af13725fd59501425a79fbd45a3431613e775319dc345fb\",\"dweb:/ipfs/QmYQepv4N9Kw2R3aBCkDYRnzK6ddPuqJjT6dwy9cBs6rLf\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060c78061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c80632f048afa14603757806357de26a4146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea2646970667358221220fb1d42bd6b2c95db175b2a975c577066e20ffb957f66f1c29f947760a2baafd764736f6c634300060c0033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c80632f048afa14603757806357de26a4146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea2646970667358221220fb1d42bd6b2c95db175b2a975c577066e20ffb957f66f1c29f947760a2baafd764736f6c634300060c0033",
+  "sourceMap": "78:187:0:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "78:187:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;196:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;123:69;;;:::i;:::-;;;;;;;;;;;;;;;;;;;196:67;250:8;242:5;:16;;;;196:67;:::o;123:69::-;160:7;182:5;;175:12;;123:69;:::o",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.6.0;   //>=0.4.22 <0.9.0;\n\ncontract SimpleStorage {\n  uint256 value;\n\n  function read() public view returns (uint256) {\n    return value;\n  }\n\n  function write(uint256 newValue) public {\n    value = newValue;\n  }\n}\n",
+  "sourcePath": "/home/user/Documents/CodeProjects/Blockchain_Rampup/6b_EthDev_wSolidityCourse/Projects/EventTriggers&SupplyChain/reactapp/truffle/contracts/SimpleStorage.sol",
   "ast": {
-    "absolutePath": "/home/user/Documents/CodeProjects/Blockchain_Rampup/6b_EthDev_wSolidityCourse/Projects/EventTriggers&SupplyChain/reactproject/truffle/contracts/SimpleStorage.sol",
+    "absolutePath": "/home/user/Documents/CodeProjects/Blockchain_Rampup/6b_EthDev_wSolidityCourse/Projects/EventTriggers&SupplyChain/reactapp/truffle/contracts/SimpleStorage.sol",
     "exportedSymbols": {
       "SimpleStorage": [
         22
@@ -50,15 +50,12 @@
         "id": 1,
         "literals": [
           "solidity",
-          ">=",
-          "0.4",
-          ".22",
-          "<",
-          "0.9",
+          "^",
+          "0.6",
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "32:32:0"
+        "src": "32:23:0"
       },
       {
         "abstract": false,
@@ -82,7 +79,7 @@
             "nodeType": "VariableDeclaration",
             "overrides": null,
             "scope": 22,
-            "src": "93:13:0",
+            "src": "105:13:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -93,7 +90,7 @@
               "id": 2,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "93:7:0",
+              "src": "105:7:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -106,7 +103,7 @@
             "body": {
               "id": 10,
               "nodeType": "Block",
-              "src": "157:23:0",
+              "src": "169:23:0",
               "statements": [
                 {
                   "expression": {
@@ -116,7 +113,7 @@
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
                     "referencedDeclaration": 3,
-                    "src": "170:5:0",
+                    "src": "182:5:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -125,7 +122,7 @@
                   "functionReturnParameters": 7,
                   "id": 9,
                   "nodeType": "Return",
-                  "src": "163:12:0"
+                  "src": "175:12:0"
                 }
               ]
             },
@@ -142,7 +139,7 @@
               "id": 4,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "124:2:0"
+              "src": "136:2:0"
             },
             "returnParameters": {
               "id": 7,
@@ -156,7 +153,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 11,
-                  "src": "148:7:0",
+                  "src": "160:7:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -167,7 +164,7 @@
                     "id": 5,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "148:7:0",
+                    "src": "160:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -177,10 +174,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "147:9:0"
+              "src": "159:9:0"
             },
             "scope": 22,
-            "src": "111:69:0",
+            "src": "123:69:0",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "public"
@@ -189,7 +186,7 @@
             "body": {
               "id": 20,
               "nodeType": "Block",
-              "src": "224:27:0",
+              "src": "236:27:0",
               "statements": [
                 {
                   "expression": {
@@ -206,7 +203,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 3,
-                      "src": "230:5:0",
+                      "src": "242:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -221,13 +218,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 13,
-                      "src": "238:8:0",
+                      "src": "250:8:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "230:16:0",
+                    "src": "242:16:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -235,7 +232,7 @@
                   },
                   "id": 19,
                   "nodeType": "ExpressionStatement",
-                  "src": "230:16:0"
+                  "src": "242:16:0"
                 }
               ]
             },
@@ -260,7 +257,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 21,
-                  "src": "199:16:0",
+                  "src": "211:16:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -271,7 +268,7 @@
                     "id": 12,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "199:7:0",
+                    "src": "211:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -281,29 +278,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "198:18:0"
+              "src": "210:18:0"
             },
             "returnParameters": {
               "id": 15,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "224:0:0"
+              "src": "236:0:0"
             },
             "scope": 22,
-            "src": "184:67:0",
+            "src": "196:67:0",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
         "scope": 23,
-        "src": "66:187:0"
+        "src": "78:187:0"
       }
     ],
-    "src": "32:222:0"
+    "src": "32:234:0"
   },
   "legacyAST": {
-    "absolutePath": "/home/user/Documents/CodeProjects/Blockchain_Rampup/6b_EthDev_wSolidityCourse/Projects/EventTriggers&SupplyChain/reactproject/truffle/contracts/SimpleStorage.sol",
+    "absolutePath": "/home/user/Documents/CodeProjects/Blockchain_Rampup/6b_EthDev_wSolidityCourse/Projects/EventTriggers&SupplyChain/reactapp/truffle/contracts/SimpleStorage.sol",
     "exportedSymbols": {
       "SimpleStorage": [
         22
@@ -317,15 +314,12 @@
         "id": 1,
         "literals": [
           "solidity",
-          ">=",
-          "0.4",
-          ".22",
-          "<",
-          "0.9",
+          "^",
+          "0.6",
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "32:32:0"
+        "src": "32:23:0"
       },
       {
         "abstract": false,
@@ -349,7 +343,7 @@
             "nodeType": "VariableDeclaration",
             "overrides": null,
             "scope": 22,
-            "src": "93:13:0",
+            "src": "105:13:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -360,7 +354,7 @@
               "id": 2,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "93:7:0",
+              "src": "105:7:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -373,7 +367,7 @@
             "body": {
               "id": 10,
               "nodeType": "Block",
-              "src": "157:23:0",
+              "src": "169:23:0",
               "statements": [
                 {
                   "expression": {
@@ -383,7 +377,7 @@
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
                     "referencedDeclaration": 3,
-                    "src": "170:5:0",
+                    "src": "182:5:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -392,7 +386,7 @@
                   "functionReturnParameters": 7,
                   "id": 9,
                   "nodeType": "Return",
-                  "src": "163:12:0"
+                  "src": "175:12:0"
                 }
               ]
             },
@@ -409,7 +403,7 @@
               "id": 4,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "124:2:0"
+              "src": "136:2:0"
             },
             "returnParameters": {
               "id": 7,
@@ -423,7 +417,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 11,
-                  "src": "148:7:0",
+                  "src": "160:7:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -434,7 +428,7 @@
                     "id": 5,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "148:7:0",
+                    "src": "160:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -444,10 +438,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "147:9:0"
+              "src": "159:9:0"
             },
             "scope": 22,
-            "src": "111:69:0",
+            "src": "123:69:0",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "public"
@@ -456,7 +450,7 @@
             "body": {
               "id": 20,
               "nodeType": "Block",
-              "src": "224:27:0",
+              "src": "236:27:0",
               "statements": [
                 {
                   "expression": {
@@ -473,7 +467,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 3,
-                      "src": "230:5:0",
+                      "src": "242:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -488,13 +482,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 13,
-                      "src": "238:8:0",
+                      "src": "250:8:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "230:16:0",
+                    "src": "242:16:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -502,7 +496,7 @@
                   },
                   "id": 19,
                   "nodeType": "ExpressionStatement",
-                  "src": "230:16:0"
+                  "src": "242:16:0"
                 }
               ]
             },
@@ -527,7 +521,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 21,
-                  "src": "199:16:0",
+                  "src": "211:16:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -538,7 +532,7 @@
                     "id": 12,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "199:7:0",
+                    "src": "211:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -548,26 +542,26 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "198:18:0"
+              "src": "210:18:0"
             },
             "returnParameters": {
               "id": 15,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "224:0:0"
+              "src": "236:0:0"
             },
             "scope": 22,
-            "src": "184:67:0",
+            "src": "196:67:0",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
         "scope": 23,
-        "src": "66:187:0"
+        "src": "78:187:0"
       }
     ],
-    "src": "32:222:0"
+    "src": "32:234:0"
   },
   "compiler": {
     "name": "solc",
@@ -575,7 +569,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.20",
-  "updatedAt": "2022-06-22T19:43:03.281Z",
+  "updatedAt": "2022-06-28T17:04:04.052Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

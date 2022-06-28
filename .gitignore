@@ -3,6 +3,7 @@
 **/dist
 **/.cache
 **/client/dist
+**/Ganache
 
 .pnp.js
 
