@@ -397,16 +397,20 @@ store.subscribe(() => console.log("store.getState()",store.getState()));
 \item \textbf{Dealing with Cross Origin Resource Sharing:} When making a fetch() request to a remote server, the request will often fail because of the CORS policy. 
 \item \textbf{What is CORS?}
 \item \textbf{Definitions (for CORS):}
-\mitem origin: the server the application is running from.
+\mitem Origin: An application identified by a (protocol):(domain):(port) tuple. Two orgiins are the same if their tuples match.
 \mitem (an) origin: the source of a particular resource.
-\mitem permitted origin: a sourced allowed by the browser to serve content - it lives outside the application itself.
-\mitem cross-origin: when the providre and destination of a resource do not match.
-\item Simple Request: One defined as a GET/HEAD/POST method with safe header fields. See \cite{cors} for details.
+\mitem Permitted Origin: a sourced allowed by the browser/server to serve content - it lives outside the application itself.
+\mitem Cross-Origin: when the provider and destination of a resource do not match.
+\item In CORS policy enforcement, both the web-browser \textbf{and} the server participate in this protocol. 
+\item \textbf{Simple Request:} One defined as a GET/HEAD/POST method with "safe header fields". See \cite{cors} for details.
+\item \textbf{Non-Simple Request:} For any request that does not match the above - or causes side-effects on the server, a browser pre-flight check is sent to the server. This is an OPTIONS request
 \item Same Origin Policy (Summary): A web application using XMLHttpRequest and Fetch() can only request resources from the same origin the application was loaded from unless the response from other origins includes the \textbf{right CORS headers}.
 \item CORS only applies to HTTP requests to external sources, from scripts. This is to suppress unwanted requests from hijacked applications.
+\item CORS in general \textbf{should not apply} to back-end scrips making resource requests cross-origin.
 \item \textbf{Different Header Options:}
+\item \textit{Access-Control-Allow-Origin:} Set by the server in teh response, to let the browser know if its permitted to be served the response. If all external sources are OK, set to "*".
 \item \textit{External Server:} the Header option for CORS is \textit{Access-Control-Allow-Origin} - this is set in the response object from the external source. If set to "*", any application can request resources from the server. For better security settings - a resource provider will have a short-list of approved applicatoins.
-\item \textit{App Origin:} For a non-simple request (not a simple GET/POST...), a preflight request is sent to the external server by the browser. This consists of an OPTIONS request with the \textit{Access-Control-Reqest-Method} and \textit{Access-Control-Request-Headers} fields set. Once the response is sent back and is approved by browser, the non-simple request is sent out.
+\item \textit{App Origin:} Set by the browser, used in pre-flight check. This consists of an OPTIONS request with the \textit{Access-Control-Reqest-Method} and \textit{Access-Control-Request-Headers} fields set. Once the response is sent back and is approved by browser, the non-simple request is sent out.
 
 \includegraphics[scale=0.22]{cors.png}
 
@@ -534,6 +538,54 @@ Tab2: npm run dev-client
 \item 4) (Optional): See the Heroku setting panel to adjust port/url/mapping etc. Remember to update the github repo link if you make this change with:  \textit{git remote set-url $<$new heroku url$>$}
 
 \item
+\end{itemize}
+
+\section{Express.js Notes}
+
+\begin{itemize}
+\item Express.js is a \textbf{CommonJS} web application framework that works well for webserver/middleware applications.
+\item: Analogy: Think of Express as the node http/https module with many more options and add-ons.
+\item Def: Middleware: Any software or layer that has access to both the Request and Response objects of transport protocol.
+\item Compare this to our Front-End, which would would typically only manipulate the Request. Likewise, the Back-End manipulates the Response.
+\item \textbf{Installation:} Install \textit{express} and \textit{nodemon} packages. Run \textit{node nodemon ./filename.js}. To start our server.
+\item Nodemon will auto-update our express server.js changes, as we develop the file.
+\item You can easily ping an express server - just use the curl command:
+
+\begin{verbatim}
+curl -X POST "http://localhost:3000/route..."
+\end{verbatim}
+
+No need for JQuery to interact with it.
+
+\item Routes: Are URL paths that segment our functionality for our server app. 
+\item Dynamic routes allow for parameterization through the URL path.
+\item App.use() activates plugin features (like body-parser), and also activates custom middleware functions.
+\item Some Middleware code patterns: 
+\item Remember, that each middleware callback must call next(), terminate or give a response - else Express will hang.
+
+\item Always Called/Pre-Processing MW: No route required.
+
+\begin{verbatim}
+app.use((req,res,next) => {
+//body....
+});
+\end{verbatim}
+
+
+\item Routing to specific middleware:
+
+\begin{verbatim}
+app.use("/test/:param1/:param2..."(req,res,next) => { //body });
+\end{verbatim}
+
+\item Chaining specific middleware functions in sucession:
+
+\begin{verbatim}
+app.use("/test/:param1/:param2...",(req,res,next) => { //body },(req,res,next) => { //body });
+\end{verbatim}
+\item How do we dispatch from middle-ware to back-end functionality? You can use the fetch() command!
+\item 
+
 \end{itemize}
 
 
