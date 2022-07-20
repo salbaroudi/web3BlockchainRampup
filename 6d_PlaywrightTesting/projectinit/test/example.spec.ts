@@ -1,4 +1,6 @@
  import {test, expect} from "@playwright/test"
+ import { loadHomepage, assertTitle } from "../helpers"
+
 
  test("Simple basic test", async ({ page }) => {
    //Open Browser, go ot this page/.
@@ -69,3 +71,46 @@
     test.("Two", ({page}) => {...})
 })
 */
+
+test.skip("Screenshots Full Page", async ({ page }) => {
+  await page.goto("https://example.com")
+  //Need JSON Object to customize options, instead of meandering fheader.
+  await page.screenshot({path: "screenshot.png", fullPage: true})
+})
+
+test.skip("Screenshots Single Element", async ({ page }) => {
+  await page.goto("https://example.com")
+  //Notice we focus screenshot on the element now, not page.
+  const element = await page.locator("h1")
+  await element.screenshot({path: "single.png", fullPage: false})
+})
+
+
+test.describe.parallel.only("Hooks Example", () => {
+  //We can reduce setup redundancies with the beforeEach hook.
+  test.beforeEach(async ({ page }) => {
+    await page.goto("https://example.com")
+  })
+
+  test("Screenshots Full Page", async ({ page }) => {
+    //Need JSON Object to customize options, instead of meandering fheader.
+    await page.screenshot({path: "screenshot.png", fullPage: true})
+  })
+
+  test("Screenshots Single Element", async ({ page }) => {
+    //Notice we focus screenshot on the element now, not page.
+    const element = await page.locator("h1")
+    await element.screenshot({path: "single.png", fullPage: false})
+  })
+})
+
+//We can just make our own functions in a .ts file, and import them (above)
+test("Custom Function Example", async ({ page }) => {
+  //Remember: our imported function is async, but we still need to mark
+  //These behaviours with awaits
+  //Closures must occur, as we don't return anything. and we have persistance
+  //of loaded objects.
+  await loadHomepage(page)
+  await page.pause()
+  await assertTitle(page)
+})

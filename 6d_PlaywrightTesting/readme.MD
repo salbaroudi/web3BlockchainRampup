@@ -62,6 +62,7 @@ The description string of the test() is given a special AT tag, which our cmd li
 ### Playwright Configuration Files:
 
 - For different browsers, and test environments, we use configuration files to avoid passing endless parameters. You can set global parameters, as well as browser specific parameters. See *playwright.config.ts* for details.
+o
 - To use configurations and projects: *"npx playwright test --config=<filepath> --project=<projectName>"*
 
 
@@ -72,4 +73,27 @@ The description string of the test() is given a special AT tag, which our cmd li
     - html: write all data to an html file, writes to the /data folder.
 
 
-- We can take Screenshots of our testing application, to gather error information.
+- We can take Screenshots of our testing application, either the full page or individual elements.
+
+-Hooks: Are used to add code before and after tests - and can help with setup/takedown, reducing code redundancy.
+- Methods are *beforeEach beforeAll, afterEach afterAll*.
+
+- Custom Functions: Simply put your own functions in a file with marked exports, and import with the ES Module system. Remember to mark function calls with "await" as everything is async.
+
+- Node Scripts: We don't want to type long command option strings into terminal, so setup package.json with the following:
+
+```
+"scripts": {
+  "tests:chrome": "playwright test --config=playwright.config.ts --project=Chromium",
+  "tests:firefox": "playwright test --config=playwright.config.ts --project=Firefox"
+},
+```
+
+-Playwright Inspector: Is similar to a FF/Chrome Debugger console. We can place breakpoints by using the *page.pause()* function. Note: This only works if the test is **--headed**
+
+
+- Artifacts on Fail: We can produce videos and screenshots when one of our test cases fails. In the playwrite.config file, use the following option for the **use** subobject: *screenshot: "only-on-failure"*
+
+- Running Tests in Parallel: Tests are run sequentially, unless we specify the .parallel() option. For a given test describe() block, we can modify it with *test.describe.parallel()...* To thread all of our subtests. If they are independent, this makes things faster.
+
+## Section 3: End-To-End Test Project, using PW Fundamentals:

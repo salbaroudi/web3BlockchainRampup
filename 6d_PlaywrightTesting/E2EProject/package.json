@@ -1,0 +1,16 @@
+{
+  "name": "e2eproject",
+  "version": "0.1.0",
+  "description": "Illustrates basic Playwright functionality in a practical project",
+  "main": "index.js",
+  "scripts": {
+    "tests:chrome": "playwright test --config=playwright.config.ts --project=Chromium",
+    "tests:firefox": "playwright test --config=playwright.config.ts --project=Firefox",
+    "tests:e2e": "playwright test --config=e2e.config.ts --project=Chromium"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@playwright/test": "^1.23.4"
+  }
+}
