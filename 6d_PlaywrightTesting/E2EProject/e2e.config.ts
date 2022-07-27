@@ -1,16 +1,16 @@
 import { PlaywrightTestConfig} from "@playwright/test"
 
 const config: PlaywrightTestConfig = {
-  timeout: 60000,
+  timeout: 30000,
   retries: 0,
   testDir:"./tests",
   use: { //Browser Specific options
     headless: true,
     viewport: {width: 1280, height: 720},
-    actionTimeout: 10000,
+    actionTimeout: 5000,
     ignoreHTTPSErrors:true,
     video: "off",
-    screenshot:"only-on-failure",
+    screenshot:"off",
   },
   projects:[
     {
