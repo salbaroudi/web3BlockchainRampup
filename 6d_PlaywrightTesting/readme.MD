@@ -97,3 +97,29 @@ o
 - Running Tests in Parallel: Tests are run sequentially, unless we specify the .parallel() option. For a given test describe() block, we can modify it with *test.describe.parallel()...* To thread all of our subtests. If they are independent, this makes things faster.
 
 ## Section 3: End-To-End Test Project, using PW Fundamentals:
+
+
+
+
+
+
+
+## Section 4: Page Objects Model:
+
+The Page objects model is a Testing Design Pattern. Instead of having sprawling scripts of tests, grouped together with .describe() statements, we make Object classes for each of the major application pages we wish to test.
+
+### Creating our Project Folder:
+
+- When we specify Page Classes, each word is Capitalized by convention (ex :LoginPage.ts).
+- Class Files are stored at the root level of the directory.
+- Each Test Script imports a Class File, and in our describe() containers, we set local variables that hold an instance object of each class
+
+```
+import { ClassName } from "../ClassName"
+
+test.describe...() {
+  let className = ClassName
+
+}
+
+```

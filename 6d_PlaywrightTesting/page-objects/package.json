@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "tests:chrome": "playwright test --config=playwright.config.ts --project=Chromium",
+    "tests:firefox": "playwright test --config=playwright.config.ts --project=Firefox",
+    "tests:e2e": "playwright test --config=playwright.config.ts --project=Chromium"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.24.2"
+  }
+}
