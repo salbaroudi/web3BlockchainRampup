@@ -6,26 +6,35 @@
 </head>
   <body>
     <h2> Open the Inspection Console, to see the results of the test functions. </h2>
-    <div id="contain"> Simple Event Attachment example.
+    <div id="contain"> <b>Simple Event Attachment example.</b>
       <button id="b1"> Button 1</button>
       <button id="b2"> Button 2</button>
       <button id="b3"> Button 3</button>
     </div>
-
-    <div id="p1"> Bubbling Example.
+    <hr />
+      <div id="p1"> <b>Bubbling Example:</b>
        <div id="c1"> Click Me</div>
        <div id="c2"> Click Me</div>
        <div id="c3"> Click Me</div>
        <div id="c4"> Click Me</div>
      </div>
-
+     <hr />
      <div id="p2">
-      Capture Example.
+      <b>Capture Example</b>
       <div id="cc1"> A Div1 
         <div id="cc2"> A Div2
       </div>
      </div>
-
+     <hr />
+    <div id="anothercontainer"> <b>Custom Event Example.</b>
+      <button id="cb1"> Trigger OurEvent</button>
+      <button id="cb2"> Trigger OurCustomEvent</button>
+    </div>
+    <hr />
+    <div id="container2"> <b> Proof that Events are Async By Default</b>
+      <div> Inspect console for details </div>
+      <div id="async1"> Trigger Async Event</div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
