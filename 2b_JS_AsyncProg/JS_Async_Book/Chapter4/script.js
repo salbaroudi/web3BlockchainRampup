@@ -108,6 +108,7 @@ console.log("is done?" + hold.done);
 //So now, we can use generators to make a more terse Pi Calculator. Lets jump
 //Straight to postMessage() to do this.
 
+
 function* genComputePi() {
     var k;
     var pi = 0;
@@ -119,7 +120,6 @@ function* genComputePi() {
     }
     return pi;
 }
-
 function computePiGen() {
     //Our generator object has been created.
     var computePi = genComputePi();

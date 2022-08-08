@@ -189,7 +189,52 @@ myGen.next().value()...
 
 ### Chapter 5:
 
-### Chapter 6:
+- In this chapter we discuss the Worker Thread - a restricted form of thread that does work, and is spawned/connected to the main UI thread.
+- This method of Async programming is truely multi-threaded (not shared as with other methods). On a multi-core system, the worker thread is run on a separate core.
+- Worker Threads have some restrictions - to avoid deadlocks and the problems with concurrent execution and access. Note the following:
+
+1) *Loading:* Worker Threads need to be launched from files. The script for a Worker Thread is saved in a file, and loaded.
+
+2) *Spawn Point:* Worker Threads are spawned by UI Threads, (they are an object).
+
+3) *Exclusivity:* Worker Threads do not share objects or resources with UI Threads. Worker and UI can communicate with object message passing, via the postMessage() method. Events are spawned in one thread, and handled in another thread.
+
+4) *More Restricted Sandbox:* Worker Threads do not have access to the UI DOM Model, or a lot of the browsers usual resources. Any library that a WT loads, that requires such resources (such as AJAX, which uses DOM), will not function correctly.
+
+5) *Strict JSON Encodings:* The "Worker" Object pipe between UI and WT has a restricted format for communication. Data Objects with fields can be shared, but functions and other executable blocks of code cannot be stringified.
+
+- Non DOM / independent libraries can still be loaded into a Worker Thread (use CDN's for example).
+
+- Communication Cross-Over: When UI and WT communicate with postMessage(), realize that the event is spawned at a source, and event-handler is stored at the target. So both UI and WT have event triggers and handlers stored in them, to allow for 2 way communication.
+
+- Chrome Hangup: Chrome does not allow WebWorkers to be loaded from file:// sources (Firefox does however). By running a nodeJS local webserver (localhost:8000...), one can override this. 
+
+```
+npm start 
+"start":"http-server -p 80001 -c-1"
+
+```
+- As a JS Thread, Worker still has a global scope level for statements, and an Event Queue, *just like the UI thread does*. They behave similarly. So all the Asynchronous Issues we have with the UI thread also apply to Worker. Recall that a thread in the middle of a long running task will finish its task, before the Event Queue is looked at.
+
+- The UI Thread can only interact with the worker with two methods: terminate() and postMessage().
+
+- For the Worker to self-terminate, it must use the close() method.
+
+### Chapter 6: Beginning Promises.
+
+- Promises are a specific way of organizing callbacks, specifically designed to allow for sequences of callbacks to be run.
+
+- Basic Properties of a Promise:
+
+1) A Promise returns a Promise Object when called. This object has a state (of pending), while it waits for asynchronous work to be completed.
+
+2) A promise may have the following states: (i) Pending, (ii) Resolved, (iii) Rejected, or (iv) Settled (which means resolved or rejected).
+
+3) The idea of a promise is that it waits until the asynchronous code is complete. Once this happens, it executes one of two callback functions, onComplete or onError. Nothing happens when the promise is waiting - and you can be sure one of the two callbacks will be run when a return occurs.
+
+4) Promises handlers (using the .then() method) can be set multiple times. However, they may not run in the order they were set.
+
+5) Promises can only return a single value - however a packaged object can be used.
 
 ### Chapter 7:
 
