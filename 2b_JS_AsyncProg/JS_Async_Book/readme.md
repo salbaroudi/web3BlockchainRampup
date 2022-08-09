@@ -236,6 +236,122 @@ npm start
 
 5) Promises can only return a single value - however a packaged object can be used.
 
+- The Structure of a Basic Promise:
+
+```
+//Making a Promise:
+
+function delay(t,p) {
+    var promise = new Promise(
+        function (resolve, reject) {
+            //It is at this point, where the asynchronous code actually runs (with SetTimeOut())
+            setTimeout(
+                function () {
+                    var r = Math.random();
+                    if (r > p) {
+                        resolve(r);
+                    }
+                    else {
+                        reject(r);
+                    }
+                },t);
+        });
+    return promise;
+}
+
+//Set-up and Use:
+var promise = delay(1000, 0.5);
+promise.then(function(r) {
+    console.log("Resolved was successful, r=" + r);
+}, function (r) {
+    console.log("Reject has occured, r=" + r);
+});
+
+```
+Notice the following:
+
+1) Our Promise object *takes a function, with two functional arguments.*
+
+2) The asynchronous code in the promise is contained in its outer-functional body (setTimeout)
+
+3) The promise must use both functional arguments, to handle either case when it is settled.
+
+4) We don't have to wrap the Promise() in a function, but this can help as it provides an additional scope of parameters.
+
+5) We deliver the two callback functions (resolve, reject) when we make the .then() call. So here, our promise returns, but our async call is not actually made until we use the .then() function.
+
+- The above model is wrong! If you just call delay(X,0), a promise is returned that settles (!!). So all that extra boilerplate (which lead us to the "partial function" hypothesis, is extraneous!). There is a fair amount of magic that occurs when a resolve() or reject() call is performed.
+
+- A promise object has the following mutually-exlusive states:
+
+1) Pending: This is when the promise is first created, and returned.
+
+2) Fulfilled: when our async call has finally returned. The resolve() callback will be called ASAP at this point.
+
+3) Rejected: when our async call fails to return, or returns error. The reject() will be called ASAP at this point.
+
+We also say a promise is "settled", when it is fulfilled or rejected.
+
+- Promises also have ["Fates"](https://github.com/domenic/promises-unwrapping/blob/master/docs/states-and-fates.md) 
+
+1) Resolved: Occurs when the resolve() or reject() functions have no effect on its current state. In other words, it has been fulfilled or rejected, or follows another promise (and accepts its values).
+
+2) Unresolved: resolve() or reject() will have an impact on its state. So pending.
+
+- You can add as many .then()s as you want to a promise, either chained or independently. There is no guarentee that indepedent thens() are handled in the order that they are added.
+
+#### Chaining Promises:
+
+Promises are meant to be chained. This allows for sequential ordering of a series of asynchronous calls. By chaining, we mean a series of .then() calls, in succession. 
+
+Builidng a chain effectively crates a queue of onComplete/onError functions, that are executed sequentially.
+
+- Note that if we have a .then() function called on Promise k, we cannot run the .then() function until Promise k settles and returns a value. The k+1th .then() will wait before it calls reject() or resolve().
+
+- The *value of each promise* in the chain is whatever the previous onComplete/onError returns;
+
+- the .then() itself returns a Promise, not the onComplete/onError.
+
+- In order for the chaining to work, the previous link in the chain must return a Promise to the next .then() method. Recall that .then() is a Promise method.
+
+-  so the onComplete produces the resolved value of the Promise, and the onError produces the rejected value of the Promise.
+
+- note that you can use named function for the onComplete and onError functions - you don't need to include their functional headers. Named functions allow debugging stack traces to actually name the code (vs just diplaying an anonymous line of code.)
+
+- Promises can be combined in the Promise.all() and Promise.race() calls. These take an array of promises [p1, p2,...] as an argument.
+
+- Promise.all will return a final promise only after all promises have settled. The value of this final promise is an array of returned results.
+
+- Promise.race will return the result of whatever Promise finishes first. The rest of the Promises will be ignored, and there results abandoned.
+
+#### Error Handling in Promises:
+
+- our onError function for then() normally will deal with errors.
+
+- note that it is the Programmers option to throw an error if detected - you can still choose to cointinue the program.
+
+- If an exception is thrown, the Promise chian is terminated automatically.
+
+- if an onComplete or onError handler is missing, the Promise is passed to the next .then() statement, and those handlers are used.
+
+- A common Promise Chain idiom is to make the last then() statement a catch all, for simple error handling (use the catch(onError)) statement.
+
+The Then Promise Chain: All possible results.
+
+If a handler in a then() call...
+
+1) returns a Value: the promise returned by then() gets resolved with the returned value as value.
+
+2) Throws an Error: the promise returned by then gets rejected, with thrown error as its value.
+
+3) Returns a Resolved Promise: the Promise returned by then takes the former Promises value, and uses it to settle.
+
+4) Returns a Rejected Promise: 
+
+5) Returns another Pending Promise:
+
+6) ...If there is no handler for the current state of Promise: 
+
 ### Chapter 7:
 
 ### Chapter 8:
