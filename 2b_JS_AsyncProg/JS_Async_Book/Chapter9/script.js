@@ -20,6 +20,7 @@ function delay(t,p) {
 
 //This illustrates how async and await work.
 //---------------------------------------------------
+/*
 async function myFun() {
     //1 - we await here, and return to the global call level.
     //3 - with nothing left to do, we wait for delay to return a promise.
@@ -74,3 +75,77 @@ async function myFun3() {
 }
 
 myFun3()
+
+//Lets take a look at error processing with all this.
+
+async function myFun4() {
+    try {
+        var r = await delay(1000,1);
+    } catch (v) {
+        console.log("Error::" + v)
+    }
+    return r;
+}
+
+myFun4();
+
+//Note if we don't use try catch, the Promise is returned in a rejected state.
+
+//This will throw an Uncaught (promise error to console)
+async function myFun5() {
+    var r = await delay(2000,1);
+    console.log("Rejected Promise::" + r)
+    return r;
+}
+
+//This returns a rejected promise. The async return knows that the delay failed (somehow)?>
+let hold = myFun5();
+
+//Parallel Awaits:
+//Notice that we use the same variable (r) for both awaits, but they return within
+//100ms of each other (very quickly in console.
+//This can only happen if, after re-entry of the p1 await, we immediately
+//await the p2.
+//Also notice that on going from one await statement to the other, we don't execute
+//The console.log statements that have no variable dependence. Strange!!
+//Finally, even if we await p1 for much longer than p2, p2 still executes after
+//p1. So p1 is handled before p2, regardless of setTimeout time in delay.
+async function myFun6() {
+    var p1 = delay(5000,0);
+    var p2 = delay(1000,0);
+    var r = await p1;
+    console.log("just after first await");
+    console.log("p1 returned::" + r);
+    var r = await p2;
+    console.log("just after second await");
+    console.log("p2 returned::" + r);
+    return 0;
+}
+
+myFun6();
+*/
+
+//Final Visual Example (from text). A flashing div.
+
+function pause(t) {
+    var promise = new Promise(
+        function (resolve, reject) {
+            setTimeout( function() {
+                resolve();
+            },t);
+        });
+    return promise;
+}
+
+let fDiv = document.getElementById("fDiv");
+//Similar to our parallel code above, the first await has to complete before
+//The second, and our loop will not actulaly stack (which would cause fast flickering).
+fDiv.addEventListener("click", 
+    async function (event) {
+        while (true) {
+            fDiv.style.backgroundColor = "red";
+            await pause(500);
+            fDiv.style.backgroundColor = "white";
+            await pause(500);
+        }
+    });

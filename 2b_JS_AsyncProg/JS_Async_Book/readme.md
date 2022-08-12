@@ -487,11 +487,13 @@ myFun().then(function (value) { console.log()....})
 
 - So our auto-generated Promise exists between when our Async function is called, and Await is handed a fulfilled promise from the async function.
 
+- Also note, we need to be in an async scope to use await, but the function call we await does not have to be async - even those that handle promises.
+
 - **(!!) Await allows us to unpackage a promise, and extract its value**. This is how you are supposed to get values out of a chain of .then() statements.
 
 #### Error Handling with Async-Await:
 
-- **(!!) In addition to the unpackaging, await allows us to use straight-forward try/catch errors. We can try-catch as we normally would (with synchronous code)**. See code example below:
+- **In addition to the unpackaging fulfilled promises, await allows us to use straight-forward try/catch errors. A rejected promise will have its value wrapped in an Exception object. We can try-catch as we normally would (with synchronous code)**. See code example below:
 
 ``` 
 async function myFun() {
@@ -504,6 +506,9 @@ async function myFun() {
 }
 
 ```
+- Any await code not wrapped in a try/catch will cause an rejected Promise to be returned, and an error will be raised on Console.
+
+
 
 #### A Break-down of Async Await in Action:
 
@@ -536,4 +541,4 @@ async function myFun() {
 
 5) We Combined Promises with our usual setTimeout, postMessage hacks, and this does work reasonably well however...
 
-**Async and Await guarentee that asyncronous, non-blocking code will execute sequentially, allow for caller functions to continue doing work (if there is some to do), and does this with simple and short keyword syntax, compared to what we see in attempts 1-4. It is a complete solution, that is easy to use with few drawbacks.**
+**Async and Await guarentee that asyncronous, non-blocking code will execute sequentially, allow for caller functions to continue doing work (if there is some to do), and does this with simple and short keyword syntax, compared to what we see in attempts 1-4. In addition, we can use await in parallel (see examples), getting fast results that still occur in sequence. It is a complete solution.**
