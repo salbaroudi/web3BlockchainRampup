@@ -98,9 +98,7 @@ o
 
 ## Section 3: End-To-End Test Project, using PW Fundamentals:
 
-
-
-
+This was an example project, that implements the functionality mentioned above. See code base for details.
 
 
 

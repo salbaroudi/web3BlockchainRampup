@@ -6,7 +6,7 @@
   "scripts": {
     "tests:chrome": "playwright test --config=playwright.config.ts --project=Chromium",
     "tests:firefox": "playwright test --config=playwright.config.ts --project=Firefox",
-    "tests:e2e": "playwright test --config=e2e.config.ts --project=Chromium"
+    "tests:e2e": "playwright test --config=playwright.config.ts --project=Chromium"
   },
   "author": "",
   "license": "MIT",

@@ -15,8 +15,6 @@ export class LoginPage {
         this.submitButton = page.locator("text=Sign in")
         this.errorMessage = page.locator(".alert-error")
     }
-    // Define Page methods.
-    //we should actulaly not use visit(). It is simple and will refactor later.
     
     async login(username: string, password: string) {
         await this.usernameInput.type(username)
