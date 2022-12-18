@@ -1,6 +1,6 @@
 import { expect, Locator, Page } from "@playwright/test"
 
-export class Feedbackpage {
+export class FeedBackPage {
     readonly page: Page
     readonly nameInput: Locator
     readonly emailInput: Locator
