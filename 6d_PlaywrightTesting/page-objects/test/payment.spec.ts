@@ -1,14 +1,18 @@
 
 import { test, expect } from "@playwright/test"
-
 import { HomePage } from '../HomePage'
 import { LoginPage } from '../LoginPage'
 
+import { PaymentPage} from '../PaymentPage'
+import { Navbar, NavBar } from '../components/Navbar'
 
 test.describe("Currency Purchase", () => {
     let homePage: HomePage
     let loginPage: LoginPage
     
+    let paymentPage: PaymentPage
+    let navbar: NavBar
+
     test.beforeEach(async ({ page }) => {
         /*await page.goto("http://zero.webappsecurity.com/index.html")
         await page.click("#signin_button")
@@ -20,15 +24,21 @@ test.describe("Currency Purchase", () => {
 
         homePage = new HomePage(page)
         loginPage = new LoginPage(page)
+        paymentPage = new PaymentPage(page)
+        navbar = new Navbar(page)
+
 
         await homePage.visit()
         await homePage.clickOnSignIn()
         await loginPage.login("username","password")
+        //Because of linux!
         await page.goto('http://zero.webappsecurity.com/bank/transfer-funds.html')
     })
 
     test("Should Purchase Currency", async ({ page }) => {
-    await page.click("#pay_bills_tab")
+
+    navbar.clickOnTab("Pay Bills")
+    /*await page.click("#pay_bills_tab")
     await page.type("#sp_payee", "apple")
     await page.click("#sp_get_payee_details")
     //Just checking to see if payee details load - system has registered payee correctly.
@@ -42,12 +52,13 @@ test.describe("Currency Purchase", () => {
     await page.type("#sp_description", "We paid apple")
 
     //Now everything is set up, click the pay button
-    await page.click("#pay_saved_payees")
-
+    await page.click("#pay_saved_payees") */
+    await paymentPage.createPayment()
+    await paymentPage.assertSuccessMessage()
     //Confirm green confirmation message
     // ">" means target a span right after we find the alert_content
-    const message = await page.locator("#alert_content > span")
+/*    const message = await page.locator("#alert_content > span")
     await expect(message).toBeVisible()
-    await expect(message).toContainText("The payment was successfully submitted")
+    await expect(message).toContainText("The payment was successfully submitted") */
     })
 })

@@ -1,11 +1,9 @@
 import { test, expect } from "@playwright/test"
-
-
 import { HomePage } from '../HomePage'
-import { LoginPage} from '../LoginPage'
+import { LoginPage } from '../LoginPage'
 
 
-test.describe.only("Transfer Funds and Make Payments", () => {
+test.describe("Transfer Funds and Make Payments", () => {
     let homePage: HomePage
     let loginPage: LoginPage
     test.beforeEach(async ({ page }) => {

@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test'
 import { LoginPage } from '../LoginPage'
 import { HomePage } from '../HomePage' 
 
-test.describe.parallel("Login / Logout flow", () => {
+test.describe.parallel.only("Login / Logout flow", () => {
     let loginPage: LoginPage
     let homePage: HomePage
     //before hook - load common website
@@ -25,6 +25,7 @@ test.describe.parallel("Login / Logout flow", () => {
         //await page.click("text=Sign in")
         
         await loginPage.login("invalid username,", "invalid password")
+        await loginPage.wait(3000)
         await loginPage.assertErrorMessage()
         
         //const errorMessage = await page.locator(".alert-error")

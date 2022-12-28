@@ -1,0 +1,25 @@
+{
+  "name": "projectinit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tests:e2e": "playwright test --config=playwright.config.ts --project=Chromium",
+    "tests:chrome": "playwright test --config=playwright.config.ts --project=Chromium",
+    "tests:firefox": "playwright test --config=playwright.config.ts --project=Firefox",
+    "tests:visual:chrome": "playwright test --config=visual.spec.ts --project=Chromium",
+    "tests:visual:firefox": "playwright test --config=visual.spec.ts --project=Firefox",
+    "tests:visual:chrome:update": "playwright test --config=visual.spec.ts --project=Chromium --update-snapshots",
+    "tests:visual:firefox:update": "playwright test --config=visual.spec.ts --project=Firefox --update-snapshots",
+    "tests:api": "playwright test --config=api.config.ts --project=Chromium"
+  
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "prettier": "^2.7.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.29.1"
+  }
+}
