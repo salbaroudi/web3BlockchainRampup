@@ -11,8 +11,8 @@
     "tests:visual:firefox": "playwright test --config=visual.spec.ts --project=Firefox",
     "tests:visual:chrome:update": "playwright test --config=visual.spec.ts --project=Chromium --update-snapshots",
     "tests:visual:firefox:update": "playwright test --config=visual.spec.ts --project=Firefox --update-snapshots",
-    "tests:api": "playwright test --config=api.config.ts --project=Chromium"
-  
+    "tests:api": "playwright test --config=api.config.ts --project=Chromium",
+    "tips":"playwright test --config=tips.config.ts --project=Chromium --headed"
   },
   "author": "",
   "license": "ISC",

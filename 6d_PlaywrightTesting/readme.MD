@@ -273,8 +273,25 @@ In this section, we set-up a Playwright project that queries online APIs. Freque
 
 For this project, we will use [reqres.in](https://reqres.in). Which is a free service that allows for API calls across HTTPS.
 
-
+This section goes through basic testing patterns to call APIs with GET/POST/PUT/DELETE requests. See /api folder for code details (it is quite straightforward).
 
 ## Section 7: Advanced CI/CD Integration:
 
+This section covers Jenkins Server - a Java based tool stack (by the makers of Apache Tomcat), that deals with Continuous Integration and Continuous Deployment.
 
+As Java is not my main focus, and I will only be developing in small teams or on my own - this section isn't of use to me. Indeed, the only way to learn it is to do it, and I have no project or large team in order to do it...so a simple summary of CI/CD is provided below.
+
+![ci_cd_distinction](./img/ci_cd.png)
+
+To start a new jenkins-server instance with npm run, we can use node scripts in package.json:
+
+```
+  "jenkins-server": "java -jar jenkins.war -httpPort=8081 --enable-future=java"
+```
+
+### Section 8: Advanced: Tips & Tricks
+
+
+### References:
+
+1) [CI/CD Definition](https://www.youtube.com/watch?v=wbnOmXWyd9E)
