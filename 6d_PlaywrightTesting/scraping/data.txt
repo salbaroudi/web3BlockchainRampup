@@ -1,0 +1,102 @@
+[
+ {
+  "user": "microsoft",
+  "repo": "playwright",
+  "url": "https://github.com/microsoft/playwright"
+ },
+ {
+  "user": "checkly",
+  "repo": "headless-recorder",
+  "url": "https://github.com/checkly/headless-recorder"
+ },
+ {
+  "user": "microsoft",
+  "repo": "playwright-python",
+  "url": "https://github.com/microsoft/playwright-python"
+ },
+ {
+  "user": "codeceptjs",
+  "repo": "CodeceptJS",
+  "url": "https://github.com/codeceptjs/CodeceptJS"
+ },
+ {
+  "user": "qawolf",
+  "repo": "qawolf",
+  "url": "https://github.com/qawolf/qawolf"
+ },
+ {
+  "user": "microsoft",
+  "repo": "dotnet-podcasts",
+  "url": "https://github.com/microsoft/dotnet-podcasts"
+ },
+ {
+  "user": "microsoft",
+  "repo": "playwright-dotnet",
+  "url": "https://github.com/microsoft/playwright-dotnet"
+ },
+ {
+  "user": "reanalytics-databoutique",
+  "repo": "webscraping-open-project",
+  "url": "https://github.com/reanalytics-databoutique/webscraping-open-project"
+ },
+ {
+  "user": "playwright-community",
+  "repo": "playwright-go",
+  "url": "https://github.com/playwright-community/playwright-go"
+ },
+ {
+  "user": "microsoft",
+  "repo": "playwright-cli",
+  "url": "https://github.com/microsoft/playwright-cli"
+ },
+ {
+  "user": "simonw",
+  "repo": "shot-scraper",
+  "url": "https://github.com/simonw/shot-scraper"
+ },
+ {
+  "user": "microsoft",
+  "repo": "playwright-test",
+  "url": "https://github.com/microsoft/playwright-test"
+ },
+ {
+  "user": "ocsjs",
+  "repo": "ocsjs",
+  "url": "https://github.com/ocsjs/ocsjs"
+ },
+ {
+  "user": "microsoft",
+  "repo": "playwright-java",
+  "url": "https://github.com/microsoft/playwright-java"
+ },
+ {
+  "user": "ulixee",
+  "repo": "secret-agent",
+  "url": "https://github.com/ulixee/secret-agent"
+ },
+ {
+  "user": "fingerprintjs",
+  "repo": "BotD",
+  "url": "https://github.com/fingerprintjs/BotD"
+ },
+ {
+  "user": "playwright-community",
+  "repo": "jest-playwright",
+  "url": "https://github.com/playwright-community/jest-playwright"
+ },
+ {
+  "user": "Visual-Regression-Tracker",
+  "repo": "Visual-Regression-Tracker",
+  "url": "https://github.com/Visual-Regression-Tracker/Visual-Regression-Tracker"
+ },
+ {
+  "user": "carcabot",
+  "repo": "tiktok-signature",
+  "url": "https://github.com/carcabot/tiktok-signature"
+ },
+ {
+  "user": "checkly",
+  "repo": "theheadless.dev",
+  "url": "https://github.com/checkly/theheadless.dev"
+ }
+]

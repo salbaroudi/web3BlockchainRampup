@@ -289,9 +289,93 @@ To start a new jenkins-server instance with npm run, we can use node scripts in 
   "jenkins-server": "java -jar jenkins.war -httpPort=8081 --enable-future=java"
 ```
 
-### Section 8: Advanced: Tips & Tricks
+### Section 8: Advanced: Tips & Tricks:
 
+See the ./tips/tips.spec.ts folder for details. This section outlines the following features that one might find useful.
+
+- Exposing the TestObject: This is an optional parameter for your anonymous testing function. You can dump the state of Playwright with it.
+
+- "Skip a Browser" Annotation: Can avoid a specific browser when running tests. Uses the .skip() function we are used to.
+
+- "Fix-Me" Annotation: Similar functionality to .skip(), used for a different catagory of problems (code revisions and code stability (?))
+
+- "Kick-Me" Annotation: (just kidding).
+
+- Retries Feature: Command line arg that will retry tests that fail (example: network issues)
+
+- Parameterized Tests: Run tests on arrays of data (example: list of logins, try all of them.)
+
+- Simulate Mouse Movement: You can control the mouse in the simulated browser. It does not move the mouse on your screen (just a DOM representation).
+
+- Open Multiple Tabs per window.
+
+- Device Emulation: A particularly useful feature - you can choose any tablet/phone device, and render a webpage using its screen constraints. A command-line option.
+
+- Generate PDF files.
+
+- Generate Custom Screenshots
+
+- Configure Timezones for Browser Simulatoins.
+
+- Data Helpers: Used for randomized or parameterized tests.
+
+### Section 9: Professional Custom Reporting:
+
+In this section, we learn how to further customize our test reporting, when playwright runs through a battery of tests. 
+
+To do this, we define a special file called reporter.ts at the root directory of the project. The Abstract Class *Reporter*  is imported into the file:
+
+```
+import { Reporter } from "@playwright/test/reporter"
+``
+
+We then implement the class's predefined methods, which allow us to customize report outputs. Data Inspection/Template messages can naturally be done at the beginning and end of a battery of tests, or for every test. 
+
+The basic functions that need implemented are onBegin, onEnd, onTestBegin, onTestEnd.
+
+See reporter.ts for code details.
+
+### Section 10: BDD with Cucumber and Playwright:
+
+BDD (Behaviour Driven Development) is a testing methedology where the customer (or consumer) writes tests for a piece of software being developed. This ties in heavily with Agile Development practices. Generally, these tests are black-box in the sense that the customer has no understanding of how code works (and will not implicitly create easy or biased tests to protect Programmer Egos). 
+
+
+
+
+### Section 11: BDD with CodeCeptJS and Playwright:
+
+### Section 12: Web Scraping with Playwright:
+
+This is another area where Playwright shines. In the past, I had experiences with web scraping using tweepy and python reddit scraping libraries. Web Scraping on web 2.0 websites (especially with logins and accounts) could be a painful affair, involving Selenium and other frameworks.
+
+With Playwright's abilities to interact with pages for testing, it can naturally be used to scrape data off complex websites. The only extra step is the storage of the data.
+
+Of particular note, a randomized user library must be used, to evade anti-scraping technologies. Install the **random-useragent** library for this - it does not come bundled with Playwright.
+
+For a webscraping project, we do not require the **@playwright/test** suite. Use **playwright** instead. Curiously, this is a CommonJS library, that is imported with require().
+
+### Section 13: Integration with Percy:
+
+The course instructor still has this as a work in progress (!!).
+
+Skipped.
+
+### Section 14: Third Party Test Runners:
+
+This section provides short tutorials on integration with Jest, Mocha and Ava is presented. Note:
+
+- Playwright can be used for [integration and unit testing](https://pkerschbaum.com/blog/using-playwright-to-run-unit-tests), not just E2E testing. So it can stand alone without these frameworks.
+- These frameworks are older than Playwright (more boilerplate, older libraries).
+- Ava is too obscure to learn anyways.
+
+Skipped.
+
+### Section 15: HTML+Javascript review:
+
+This provided a basic introduction to HTML and JavaScript. No need to make notes on this.
 
 ### References:
 
 1) [CI/CD Definition](https://www.youtube.com/watch?v=wbnOmXWyd9E)
+
+2) [Playwright with unit tests](https://pkerschbaum.com/blog/using-playwright-to-run-unit-tests)
