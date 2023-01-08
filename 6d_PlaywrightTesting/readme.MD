@@ -327,7 +327,7 @@ To do this, we define a special file called reporter.ts at the root directory of
 
 ```
 import { Reporter } from "@playwright/test/reporter"
-``
+```
 
 We then implement the class's predefined methods, which allow us to customize report outputs. Data Inspection/Template messages can naturally be done at the beginning and end of a battery of tests, or for every test. 
 
@@ -337,9 +337,22 @@ See reporter.ts for code details.
 
 ### Section 10: BDD with Cucumber and Playwright:
 
-BDD (Behaviour Driven Development) is a testing methedology where the customer (or consumer) writes tests for a piece of software being developed. This ties in heavily with Agile Development practices. Generally, these tests are black-box in the sense that the customer has no understanding of how code works (and will not implicitly create easy or biased tests to protect Programmer Egos). 
+BDD (Behaviour Driven Development) is a testing methedology where the customer (or consumer) writes tests for a piece of software being developed. This is apart of Agile Development practices. Generally, these tests are black-box in the sense that the customer has no understanding of how code works (and will not implicitly create easy or biased tests to protect Programmer Egos). 
 
 
+Some Spurous Notes on Cucumber - See Project folder for technical details::
+- **chai @cucumber/cucumber chai cucumber-html-reporter ** packages were installed via NPM.
+- There are a number of components to get Cucumber working (it is not all built in)
+  - Setup folder: contains assertions.js (for an assertion library import), and a hooks.js file 
+  - Step Definitions Folder: For a BDD script, each user wish is a "step definition". These
+  templated phrases are called (like functions), and a set of actions in a functional
+  block is executed, somewhere.
+ - Features Folder: A feature is where our Behavioural Tests (or user wishes) are stored. They compriese of sets of english statements, that are interpreted.
+  - Reports Folder: Here, our test run reports are printed and stored. 
+  - Cucumber.js: This file binds all of the pieces together, and gets node to run the framework.
+  - Reporter.js: Configure your reporter here.
+- Cucumber seems to rely on the older CommonJS import system - probably for greater compatability.
+- Overall, this framework creates an easy way for users to generate BDD tests. The framework on the developer/tester side quite fragmented, however :(.
 
 
 ### Section 11: BDD with CodeCeptJS and Playwright:
@@ -356,19 +369,17 @@ For a webscraping project, we do not require the **@playwright/test** suite. Use
 
 ### Section 13: Integration with Percy:
 
-The course instructor still has this as a work in progress (!!).
+The course instructor still has this as a work in progress (!!). Doesn't look like it will be finished anytime soon (no recent instructor involvement).
 
 Skipped.
 
 ### Section 14: Third Party Test Runners:
 
-This section provides short tutorials on integration with Jest, Mocha and Ava is presented. Note:
+This section provides short tutorials on integration with Jest, Mocha and Ava is presented.
 
 - Playwright can be used for [integration and unit testing](https://pkerschbaum.com/blog/using-playwright-to-run-unit-tests), not just E2E testing. So it can stand alone without these frameworks.
 - These frameworks are older than Playwright (more boilerplate, older libraries).
-- Ava is too obscure to learn anyways.
-
-Skipped.
+- Ava is too obscure to learn.
 
 ### Section 15: HTML+Javascript review:
 

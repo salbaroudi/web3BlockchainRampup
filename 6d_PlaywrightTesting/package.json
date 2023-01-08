@@ -15,11 +15,15 @@
     "tips": "playwright test --config=tips.config.ts --project=Chromium --headed",
     "scrape": "node ./scraping/scraper.ts",
     "scrape:3": "for run in {1..10}; do node ./scraping/scraper.ts; done",
-    "scrape:4": "for var in {1..10}; do npm run scrape; done"
+    "clogin": "./node_modules/.bin/cucumber-js --require ./cucumber.js --require ./step_def/**/*.js -f json:./cucumber_report.json"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@cucumber/cucumber": "^8.10.0",
+    "chai": "^4.3.7",
+    "cucumber": "^6.0.7",
+    "cucumber-html-reporter": "^5.5.0",
     "playwright": "^1.29.2",
     "prettier": "^2.7.1",
     "random-useragent": "^0.5.0"
