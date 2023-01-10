@@ -1,0 +1,19 @@
+{
+  "name": "bdd_codeceptjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "codeceptjs run",
+    "gpo": "codeceptjs gpo"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "codeceptjs": "^3.3.7"
+  },
+  "dependencies": {
+    "playwright": "^1.29.2"
+  }
+}

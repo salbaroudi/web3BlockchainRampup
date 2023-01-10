@@ -342,6 +342,7 @@ BDD (Behaviour Driven Development) is a testing methedology where the customer (
 
 Some Spurous Notes on Cucumber - See Project folder for technical details::
 - **chai @cucumber/cucumber chai cucumber-html-reporter ** packages were installed via NPM.
+- For this project, we can't just keep everything in a folder and install node_modules at the root level (easily).
 - There are a number of components to get Cucumber working (it is not all built in)
   - Setup folder: contains assertions.js (for an assertion library import), and a hooks.js file 
   - Step Definitions Folder: For a BDD script, each user wish is a "step definition". These
@@ -357,6 +358,27 @@ Some Spurous Notes on Cucumber - See Project folder for technical details::
 
 ### Section 11: BDD with CodeCeptJS and Playwright:
 
+- Packages required: **playwright and codeceptjs**
+- CodeceptJS has a nice initialization script that sets everything up for us. Call it with **npx codeceptjs init **.
+- To run a test: **npx codeceptjs run**
+- A single test is called a "Scenario". The global object to access user wishes is just "I". An example of a beharvioural test is below:
+
+```
+Scenario('test something',  ({ I }) => {
+    I.amOnPage("https://www.example.com");
+    //This must search the entire DOM tree
+    I.see("Example");
+    I.dontSee("Google");
+    I.seeElement("h1")
+    I.dontSeeElement("#nonexistant")
+});
+```
+
+- For a PageObjects model, our framework also has commands to auto-generate a template. Use: ** npx codeceptjx gpo ** (gpo = generate page object)
+  - Note that you should check the conf.js file to make sure the GPO path was added to to the config file (My CodeceptJS added it, but the instructor's version did not.)
+- After seeing two BDD;s, I would personally choose CodeceptJS over Cucumber. Much faster to develop with.
+  - However it reqiures users to have basic coding skills (v.s written English tests for Cucumber).
+
 ### Section 12: Web Scraping with Playwright:
 
 This is another area where Playwright shines. In the past, I had experiences with web scraping using tweepy and python reddit scraping libraries. Web Scraping on web 2.0 websites (especially with logins and accounts) could be a painful affair, involving Selenium and other frameworks.
@@ -366,6 +388,8 @@ With Playwright's abilities to interact with pages for testing, it can naturally
 Of particular note, a randomized user library must be used, to evade anti-scraping technologies. Install the **random-useragent** library for this - it does not come bundled with Playwright.
 
 For a webscraping project, we do not require the **@playwright/test** suite. Use **playwright** instead. Curiously, this is a CommonJS library, that is imported with require().
+
+See project folder for the code layout.
 
 ### Section 13: Integration with Percy:
 
